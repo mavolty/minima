@@ -1,0 +1,11 @@
+extends ../base.pug
+
+block variables
+  - var template = "home"
+
+block body
+  section.home
+    .home__wrapper
+      each section in home
+        h1.home__heading= section.data.title
+        a.home__button(href=Link(section.data.link))= section.data.label

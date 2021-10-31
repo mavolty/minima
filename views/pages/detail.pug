@@ -1,0 +1,63 @@
+extends ../base.pug
+
+block variables
+  - var template = "detail"
+
+block body
+  section.detail
+    .detail__wrapper
+      h1.detail__name= project.name[0].text
+      figure.detail__media
+        img.detail__image(src=project.image.url, alt=project.image.alt)
+
+      each section in project.body
+        if section.slice_type === 'content'
+          .head-content
+            article.head-content__article
+              h2.head-content__title= section.primary.title[0].text
+              p.head-content__description= section.primary.description[0].text
+              .head-content__info
+                ul.head-content__list.head-content__list--first
+                  li.head-content__item Tipe Project
+                  li.head-content__item Gaya Desain
+                  li.head-content__item Ukuran
+                  li.head-content__item Lokasi
+                  li.head-content__item Tahun
+                ul.head-content__list.head-content__list--second
+                  li.head-content__item= section.primary.type[0].text
+                  li.head-content__item= section.primary.style[0].text
+                  li.head-content__item= section.primary.size[0].text
+                  li.head-content__item= section.primary.location[0].text
+                  li.head-content__item= section.primary.year[0].text
+              figure.head-content__media-second
+                img.head-content__media-second__image(
+                  src=section.primary["head-image-2"].url,
+                  alt=section.primary["head-image-2"].alt
+                ) 
+            figure.head-content__media-first
+              img.head-content__media-first__image(
+                src=section.primary["head-image-1"].url,
+                alt=section.primary["head-image-1"].alt
+              )
+
+        if section.slice_type === 'body_content'
+          .body-content
+            figure.body-content__media 
+              img.body-content__image(
+                src=section.primary["body-image"].url,
+                alt=section.primary["body-image"].alt
+              )
+            p.body-content__description= section.primary.description[0].text
+
+        if section.slice_type === 'footer_content'
+          .footer-content
+            figure.footer-content__media-first
+              img.footer-content__media-first__image(
+                src=section.primary["footer-image-1"].url,
+                alt=section.primary["footer-image-1"].alt
+              )
+            figure.footer-content__media-second
+              img.footer-content__media-second__image(
+                src=section.primary["footer-image-2"].url,
+                alt=section.primary["footer-image-2"].alt
+              )

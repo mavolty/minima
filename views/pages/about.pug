@@ -1,0 +1,40 @@
+extends ../base.pug
+
+block variables
+  - var template = "about"
+
+block body
+  section.about
+    .about__wrapper
+      h1.about__title= about.title[0].text
+
+      each section in about.body
+        if (section.slice_type === 'introduction')
+          section.introduction
+            figure.introduction__media
+              img.introduction__media__image(
+                src=section.primary.intro_image.url,
+                alt=section.primary.intro_image.alt
+              )
+            article.introduction__article
+              h2.introduction__title= section.primary.intro_title[0].text
+              p.introduction__description= section.primary.intro_description[0].text
+
+        if (section.slice_type === 'content')
+          section.content
+            h2.content__title= section.primary.content_title[0].text
+            p.content__description= section.primary.content_description[0].text
+
+        if (section.slice_type === 'highlight')
+          section.highlight
+            figure.highlight__media
+              img.highlight__media__image(
+                src=section.primary.highlight_image.url,
+                alt=section.primary.highlight_image.alt
+              )
+            p.highlight__slogan= section.primary.highlight_slogan[0].text
+
+        if (section.slice_type === 'article')
+          section.article
+            p.article__first= section.primary.text_left[0].text
+            p.article__second= section.primary.text_right[0].text

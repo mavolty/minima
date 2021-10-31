@@ -1,0 +1,19 @@
+extends ../base.pug
+
+block variables
+  - var template = "projects"
+
+block body
+  section.projects
+    .projects__wrapper
+      each project, index in projects
+        .project
+          h3.project__number= index + 1
+          .project__wrapper
+            h2.project__name= project.data.title.text
+            a.project__link(href=Link(project))
+              figure.project__media
+                img.project__image(
+                  src=project.data.project_image.url,
+                  alt=project.data.project_image.alt
+                )

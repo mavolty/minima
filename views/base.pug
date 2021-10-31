@@ -1,0 +1,44 @@
+block variables
+
+doctype html
+html(lang='id')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+    base(href='/')
+
+    title= meta.title
+
+    meta(name='description', content=meta.description)
+
+    link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon.png')
+    link(rel='icon', sizes='32x32', type='image/png', href='/favicon-32x32.png')
+    link(rel='icon', sizes='16x16', type='image/png', href='/favicon-16x16.png')
+    link(rel='manifest', href='/site.webmanifest')
+    link(rel='mask-icon', href='/safari-pinned-tab.svg', color='#ff3a00')
+
+    meta(name='msapplication-TileColor', content='#f4d8cc')
+    meta(name='theme-color', content='#f4d8cc')
+
+    meta(property='og:type', content='website')
+    meta(property='og:title', content=meta.title)
+    meta(property='og:description', content=meta.description)
+    meta(property='og:image', content=meta.image ? meta.image.url : "")
+
+    meta(name='twitter:card', content='summary_large_image')
+    meta(name='twitter:title', content=meta.title)
+    meta(name='twitter:description', content=meta.description)
+    meta(name='twitter:image', content=meta.image ? meta.image.url : "")
+
+    link(rel='preconnect', href='https://www.google-analytics.com')
+
+    style
+      include ../dist/styles/main.css
+
+  body
+    include ./partials/preloader
+    include ./partials/navbar
+
+    #root(data-template=template)
+      block body

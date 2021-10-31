@@ -1,0 +1,15 @@
+@import 'base/reset';
+
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/base';
+
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/projects';
+@import 'pages/contact-us';
+@import 'pages/detail';

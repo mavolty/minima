@@ -1,0 +1,8 @@
+nav.navbar
+  .navbar__wrapper
+    a.navbar__brand(href='/') Brand
+
+    ul.navbar__list
+      each item in navigation.list
+        li.navbar__item
+          a.navbar__link(href=Link(item.link))= item.text

@@ -1,0 +1,78 @@
+%cover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin ratio($width, $height) {
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    padding-top: $width / $height * 100;
+    width: 100%;
+  }
+}
+
+@mixin grid-container($range) {
+  display: grid;
+
+  @if $range == phone-only {
+    grid-template-columns: 1fr repeat(2, 163px) 1fr;
+    column-gap: $gap-4;
+  } @else if $range == tablet-portrait-up {
+    grid-template-columns: 1fr repeat(4, 130px) 1fr;
+    column-gap: $gap-4;
+  } @else if $range == desktop-up {
+    grid-template-columns: 1fr repeat(12, 78px) 1fr;
+    column-gap: $gap-6;
+  }
+}
+
+@mixin grid($range) {
+  @if $range == phone-only {
+    grid-template-columns: repeat(2, 163px);
+    column-gap: $gap-4;
+  } @else if $range == tablet-portrait-up {
+    grid-template-columns: repeat(4, 130px);
+    column-gap: $gap-4;
+  } @else if $range == desktop-up {
+    grid-template-columns: repeat(12, 78px);
+    column-gap: $gap-6;
+  }
+}
+
+@mixin for-size($range) {
+  $phone-upper-boundary: 600px;
+  $tablet-portrait-upper-boundary: 900px;
+  $tablet-landscape-upper-boundary: 1200px;
+  $desktop-upper-boundary: 1800px;
+
+  @if $range == phone-only {
+    @media (max-width: #{$phone-upper-boundary - 1}) {
+      @content;
+    }
+  } @else if $range == tablet-portrait-up {
+    @media (min-width: $phone-upper-boundary) {
+      @content;
+    }
+  } @else if $range == tablet-landscape-up {
+    @media (min-width: $tablet-portrait-upper-boundary) {
+      @content;
+    }
+  } @else if $range == desktop-up {
+    @media (min-width: $tablet-landscape-upper-boundary) {
+      @content;
+    }
+  } @else if $range == big-desktop-up {
+    @media (min-width: $desktop-upper-boundary) {
+      @content;
+    }
+  }
+}
