@@ -1,0 +1,22 @@
+.navbar {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__brand {
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+      padding: 0 1rem;
+  }
+
+  &__link {
+  }
+}

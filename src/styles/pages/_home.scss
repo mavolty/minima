@@ -1,0 +1,21 @@
+.home {
+  @extend %cover;
+  &__wrapper {
+  }
+
+  &__gallery {
+    @extend %cover;
+    position: absolute;
+  }
+
+  &__media {
+    &__image {
+    }
+  }
+
+  &__heading {
+  }
+
+  &__button {
+  }
+}

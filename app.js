@@ -76,8 +76,6 @@ app.get('/about', async (req, res) => {
   const initial = await requestHandler(api)
 
   const about = await api.getSingle('about')
-  console.log(about.data)
-  console.log(about.data.body[2].primary)
 
   res.render('pages/about', {
     about: about.data,

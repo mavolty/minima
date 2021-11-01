@@ -187,6 +187,7 @@
     @include for-size(desktop-up) {
       margin-top: $gap-12;
       grid-column: 2 / -2;
+      font-size: $fs-xl;
     }
   }
 }

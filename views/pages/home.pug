@@ -7,5 +7,9 @@ block body
   section.home
     .home__wrapper
       each section in home
+        .home__gallery
+          each img in section.data.gallery
+            figure.home__media
+              img.home__media__image(src=img.image.url, alt=img.image.alt)
         h1.home__heading= section.data.title
         a.home__button(href=Link(section.data.link))= section.data.label
