@@ -88,7 +88,10 @@ app.get('/projects', async (req, res) => {
   const initial = await requestHandler(api)
   const projects = await api.query(Prismic.Predicates.at('document.type', 'project'))
 
-  res.render('pages/projects', { projects: projects.results, ...initial })
+  res.render('pages/projects', {
+    projects: projects.results,
+    ...initial,
+  })
 })
 
 app.get('/projects/:uid', async (req, res) => {
@@ -96,7 +99,23 @@ app.get('/projects/:uid', async (req, res) => {
   const initial = await requestHandler(api)
   const project = await api.getByUID('detail', req.params.uid)
 
-  res.render('pages/detail', { project: project.data, ...initial })
+  res.render('pages/detail', {
+    project: project.data,
+    ...initial,
+  })
+})
+
+app.get('/contact', async (req, res) => {
+  const api = await initApi(req)
+  const initial = await requestHandler(api)
+  const contact = await api.getSingle('contact')
+
+  console.log(contact.data)
+
+  res.render('pages/contact', {
+    contact: contact.data,
+    ...initial,
+  })
 })
 
 app.listen(port, () => {

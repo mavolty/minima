@@ -1,0 +1,15 @@
+extends ../base.pug
+
+block variables
+  - var template = "contact"
+
+block body
+  main.contact
+    .contact__wrapper
+      h1.contact__title= contact.title[0].text
+      h2.contact__service= contact.service[0].text
+      form.contact__form
+
+      p.contact__address= contact.address
+      p.contact__phone= contact.phone
+      p.contact__email= contact.email
