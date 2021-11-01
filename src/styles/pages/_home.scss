@@ -5,10 +5,12 @@
 
   &__gallery {
     @extend %cover;
-    position: absolute;
   }
 
   &__media {
+    position: absolute;
+    width: 17.5rem;
+
     &__image {
     }
   }

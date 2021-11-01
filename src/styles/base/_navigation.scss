@@ -1,4 +1,7 @@
 .navbar {
+  padding: 2rem 4rem;
+  z-index: z('navigation');
+
   &__wrapper {
     display: flex;
     align-items: center;
@@ -8,13 +11,67 @@
   &__brand {
   }
 
+  &__label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 32px;
+    cursor: pointer;
+
+    span {
+      background-color: $clr-dark-tundora;
+      border-radius: 10px;
+      height: 2px;
+      margin: 4px 0;
+      transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+      &:hover {
+        background-color: $clr-dark-ebony;
+      }
+
+      &:nth-of-type(1) {
+        width: 50%;
+      }
+
+      &:nth-of-type(2) {
+        width: 100%;
+      }
+
+      &:nth-of-type(3) {
+        width: 75%;
+      }
+    }
+
+    input {
+      &[type='checkbox'] {
+        display: none;
+      }
+
+      &[type='checkbox']:checked ~ span:nth-of-type(1) {
+        transform-origin: bottom;
+        transform: rotatez(45deg) translate(-7px, 13px);
+      }
+
+      &[type='checkbox']:checked ~ span:nth-of-type(2) {
+        transform-origin: top;
+        transform: rotatez(-45deg);
+      }
+
+      &[type='checkbox']:checked ~ span:nth-of-type(3) {
+        transform-origin: bottom;
+        width: 50%;
+        transform: translate(-3px, -5px) rotatez(45deg);
+      }
+    }
+  }
+
   &__list {
     display: flex;
     list-style: none;
   }
 
   &__item {
-      padding: 0 1rem;
+    padding: 0 1rem;
   }
 
   &__link {
