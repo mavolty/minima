@@ -8,8 +8,27 @@ block body
     .contact__wrapper
       h1.contact__title= contact.title[0].text
       h2.contact__service= contact.service[0].text
+      .contact__info
+        p.contact__address= contact.address
+        p.contact__phone= contact.phone
+        p.contact__email= contact.email
       form.contact__form
+        .contact__field
+          label.contact__field__label= "Nama"
+          input.contact__field__input(type='text', placeholder='Masukkan nama Anda di sini')
+        .contact__field
+          label.contact__field__label= "Email"
+          input.contact__field__input(
+            type='text',
+            placeholder='Masukkan alamat email Anda di sini'
+          )
+        .contact__field
+          label.contact__field__label= "Pesan"
+          textarea.contact__field__textarea(
+            name='textarea',
+            cols='30',
+            rows='10',
+            placeholder='Tulis pesan Anda di sini'
+          )
 
-      p.contact__address= contact.address
-      p.contact__phone= contact.phone
-      p.contact__email= contact.email
+        button.contact__submit(type='submit')= "Kirim"
