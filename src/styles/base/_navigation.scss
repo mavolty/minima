@@ -1,6 +1,14 @@
 .navbar {
-  padding: 2rem 4rem;
-  z-index: z('navigation');
+  padding-inline: calc((100% - (2 * 163px + 16px)) / 2.5);
+  padding-block: 2rem;
+
+  @include for-size(tablet-portrait-up) {
+    padding-inline: calc((100% - (4 * 130px + 16px)) / 2.5);
+  }
+
+  @include for-size(desktop-up) {
+    padding-inline: calc((100% - (12 * 78px + 24px)) / 2.5);
+  }
 
   &__wrapper {
     display: flex;

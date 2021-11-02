@@ -3,7 +3,7 @@
   font-family: $ff-merriweather;
   font-size: $fs-lg;
 
-  @include for-size(desktop-up) {
+  @include for-size(tablet-portrait-up) {
     font-size: $fs-xl;
   }
 }
@@ -25,7 +25,7 @@
   font-size: $fs-2xl;
   line-height: 1;
 
-  @include for-size(desktop-up) {
+  @include for-size(tablet-portrait-up) {
     font-size: $fs-3xl;
   }
 }
@@ -39,5 +39,19 @@
 
   @include for-size(desktop-up) {
     font-size: $fs-4xl;
+  }
+}
+
+%button {
+  color: $clr-dark-ebony;
+  font-family: $ff-merriweather;
+  font-size: $fs-xl;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1;
+
+  @include for-size(desktop-up) {
+    font-size: $fs-3xl;
   }
 }
