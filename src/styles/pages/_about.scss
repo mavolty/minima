@@ -1,4 +1,8 @@
 .about {
+  @include for-size(phone-only) {
+    padding-inline: calc((100% - (2 * 163px + 16px)) / 2);
+  }
+
   &__wrapper {
     @include grid-container(phone-only);
 
@@ -12,19 +16,24 @@
   }
 
   &__title {
-    grid-column: 2 / -2;
+    grid-column: 1 / -1;
     @extend %title-4xl;
+
+    @include for-size(tablet-portrait-up) {
+      grid-column: 2 / -2;
+    }
   }
 }
 
 .introduction {
   margin-top: $gap-4;
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   display: grid;
 
   @include grid(phone-only);
 
   @include for-size(tablet-portrait-up) {
+    grid-column: 2 / -2;
     margin-top: $gap-6;
 
     @include grid(tablet-portrait-up);
@@ -87,12 +96,13 @@
 
 .content {
   margin-top: $gap-8;
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   display: grid;
 
   @include grid(phone-only);
 
   @include for-size(tablet-portrait-up) {
+    grid-column: 2 / -2;
     margin-top: $gap-12;
 
     @include grid(tablet-portrait-up);
@@ -135,12 +145,13 @@
 
 .highlight {
   margin-top: $gap-8;
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   display: grid;
 
   @include grid(phone-only);
 
   @include for-size(tablet-portrait-up) {
+    grid-column: 2 / -2;
     margin-top: $gap-12;
 
     @include grid(tablet-portrait-up);
@@ -194,12 +205,13 @@
 
 .article {
   margin-top: $gap-6;
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   display: grid;
 
   @include grid(phone-only);
 
   @include for-size(tablet-portrait-up) {
+    grid-column: 2 / -2;
     margin-top: $gap-12;
 
     @include grid(tablet-portrait-up);
