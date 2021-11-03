@@ -22,6 +22,10 @@ const linkResolver = (doc) => {
     return '/about'
   }
 
+  if (doc.type === 'contact') {
+    return '/contact'
+  }
+
   // Default to homepage
   return '/'
 }

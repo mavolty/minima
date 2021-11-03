@@ -9,6 +9,4 @@ module.exports = {
 
   // Static files that get copied to build folder
   public: path.resolve(__dirname, '../public'),
-
-  views: path.resolve(__dirname, '../views'),
 }
