@@ -1,8 +1,14 @@
-class Page {
+import EventEmitter from 'events'
+
+class Component extends EventEmitter {
   constructor({ id, element, elements }) {
+    super()
+
     this.id = id
     this.selector = element
     this.selectorChildren = elements
+
+    this.create()
   }
 
   create() {
@@ -25,9 +31,9 @@ class Page {
     }
   }
 
-  hide() {}
+  addEventHandler() {}
 
-  show() {}
+  removeEventHandler() {}
 }
 
-export default Page
+export default Components

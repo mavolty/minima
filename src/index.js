@@ -3,13 +3,25 @@ import About from './js/pages/About'
 import Projects from './js/pages/Projects'
 import Detail from './js/pages/Detail'
 import Contact from './js/pages/Contact'
+import Preloader from './js/components/Preloader'
 
 class App {
   constructor() {
     this.createContent()
     this.createPage()
 
-    this.addLinkListener()
+    this.addLinkHandler()
+    this.createPreloader()
+  }
+
+  createPreloader() {
+    this.preloader = new Preloader()
+    this.preloader.once('completed', () => this.preloadHandler())
+  }
+
+  preloadHandler() {
+    console.log('100% Loaded')
+    this.preloader.destroy()
   }
 
   createContent() {
@@ -45,13 +57,13 @@ class App {
       this.page = this.pages[this.template]
       this.page.create()
 
-      this.addLinkListener()
+      this.addLinkHandler()
     } catch (error) {
       console.error(error)
     }
   }
 
-  addLinkListener() {
+  addLinkHandler() {
     const links = document.querySelectorAll('a')
 
     links.forEach((link) => {

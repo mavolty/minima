@@ -8,7 +8,7 @@ block body
     .detail__wrapper
       h1.detail__name= project.name[0].text
       figure.detail__media
-        img.detail__image(src=project.image.url, alt=project.image.alt)
+        img.detail__image(data-src=project.image.url, alt=project.image.alt)
 
       each section in project.body
         if section.slice_type === 'content'
@@ -31,12 +31,12 @@ block body
                   li.head-content__item= section.primary.year[0].text
               figure.head-content__media-second
                 img.head-content__media-second__image(
-                  src=section.primary["head-image-2"].url,
+                  data-src=section.primary["head-image-2"].url,
                   alt=section.primary["head-image-2"].alt
                 ) 
             figure.head-content__media-first
               img.head-content__media-first__image(
-                src=section.primary["head-image-1"].url,
+                data-src=section.primary["head-image-1"].url,
                 alt=section.primary["head-image-1"].alt
               )
 
@@ -44,7 +44,7 @@ block body
           .body-content
             figure.body-content__media 
               img.body-content__image(
-                src=section.primary["body-image"].url,
+                data-src=section.primary["body-image"].url,
                 alt=section.primary["body-image"].alt
               )
             p.body-content__description= section.primary.description[0].text
@@ -53,11 +53,11 @@ block body
           .footer-content
             figure.footer-content__media-first
               img.footer-content__media-first__image(
-                src=section.primary["footer-image-1"].url,
+                data-src=section.primary["footer-image-1"].url,
                 alt=section.primary["footer-image-1"].alt
               )
             figure.footer-content__media-second
               img.footer-content__media-second__image(
-                src=section.primary["footer-image-2"].url,
+                data-src=section.primary["footer-image-2"].url,
                 alt=section.primary["footer-image-2"].alt
               )

@@ -13,7 +13,7 @@ block body
           section.introduction
             figure.introduction__media
               img.introduction__media__image(
-                src=section.primary.intro_image.url,
+                data-src=section.primary.intro_image.url,
                 alt=section.primary.intro_image.alt
               )
             article.introduction__article
@@ -29,7 +29,7 @@ block body
           section.highlight
             figure.highlight__media
               img.highlight__media__image(
-                src=section.primary.highlight_image.url,
+                data-src=section.primary.highlight_image.url,
                 alt=section.primary.highlight_image.alt
               )
             p.highlight__slogan= section.primary.highlight_slogan[0].text
