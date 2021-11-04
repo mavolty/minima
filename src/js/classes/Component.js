@@ -36,4 +36,4 @@ class Component extends EventEmitter {
   removeEventHandler() {}
 }
 
-export default Components
+export default Component
