@@ -8,13 +8,6 @@ module.exports = {
   // Where webpack looks to start building the bundle
   entry: [`${paths.src}/index.js`, `${paths.src}/styles/index.scss`],
 
-  // Where webpack outputs the assets and bundles
-  output: {
-    path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-  },
-
   // Customize the webpack build process
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
@@ -25,7 +18,7 @@ module.exports = {
       patterns: [
         {
           from: paths.public,
-          to: 'assets',
+          to: paths.build,
           globOptions: {
             ignore: ['*.DS_Store'],
           },
@@ -36,10 +29,7 @@ module.exports = {
 
     // Extracts CSS into separate files
     new MiniCssExtractPlugin({
-      filename:
-        process.env.NODE_ENV !== 'production'
-          ? 'styles/[name].css'
-          : 'styles/[name].[contenthash].css',
+      filename: '[name].css',
       chunkFilename: '[id].css',
     }),
   ],
@@ -86,6 +76,7 @@ module.exports = {
     alias: {
       '@': paths.src,
       assets: paths.public,
+      '/': paths.build,
     },
   },
 }

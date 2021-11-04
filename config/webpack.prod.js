@@ -10,7 +10,6 @@ module.exports = merge(common, {
   output: {
     path: paths.build,
     publicPath: '/',
-    filename: 'js/[name].[contenthash].bundle.js',
   },
   optimization: {
     minimize: true,
