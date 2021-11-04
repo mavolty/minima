@@ -38,7 +38,7 @@ class Preloader extends Component {
   }
 
   destroy() {
-    console.log(this.element.parentNode.removeChild(this.element))
+    this.element.parentNode.removeChild(this.element)
   }
 }
 

@@ -10,18 +10,22 @@ class App {
     this.createContent()
     this.createPage()
 
-    this.addLinkHandler()
+    this.addLink()
     this.createPreloader()
+    this.update()
   }
 
   createPreloader() {
     this.preloader = new Preloader()
-    this.preloader.once('completed', () => this.preloadHandler())
+    this.preloader.once('completed', this.preloadHandler.bind(this))
   }
 
   preloadHandler() {
     console.log('100% Loaded')
+
     this.preloader.destroy()
+    this.resize()
+    this.page.show()
   }
 
   createContent() {
@@ -43,6 +47,7 @@ class App {
   }
 
   async linkHandler(target) {
+    this.page.hide()
     const request = await window.fetch(target)
 
     try {
@@ -56,14 +61,16 @@ class App {
 
       this.page = this.pages[this.template]
       this.page.create()
+      this.resize()
+      this.page.show()
 
-      this.addLinkHandler()
+      this.addLink()
     } catch (error) {
       console.error(error)
     }
   }
 
-  addLinkHandler() {
+  addLink() {
     const links = document.querySelectorAll('a')
 
     links.forEach((link) => {
@@ -76,6 +83,16 @@ class App {
         this.linkHandler(href)
       }
     })
+  }
+
+  resize() {
+    if (this.page && this.page.resizeHandler) this.page.resizeHandler()
+  }
+
+  update() {
+    if (this.page && this.page.updateHandler) this.page.updateHandler()
+
+    this.reqAnimation = window.requestAnimationFrame(this.update.bind(this))
   }
 }
 
