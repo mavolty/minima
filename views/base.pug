@@ -34,7 +34,7 @@ html(lang='id')
     link(rel='preconnect', href='https://www.google-analytics.com')
 
     style
-      include ../dist/styles/main.css
+      include ../dist/main.css
 
   body
     include ./partials/preloader
@@ -42,3 +42,8 @@ html(lang='id')
 
     #root(data-template=template)
       block body
+
+    script
+      include ../dist/main.js
+
+    //- script(src='/main.js') 
