@@ -1,18 +1,25 @@
 import EventEmitter from 'events'
 
 class Component extends EventEmitter {
-  constructor({ id, element, elements }) {
+  constructor({ element, elements }) {
     super()
 
-    this.id = id
     this.selector = element
-    this.selectorChildren = elements
+    this.selectorChildren = { ...elements }
 
     this.create()
+    this.setAnimation()
+    this.createAnimation()
   }
 
+  setAnimation() {}
+
+  createAnimation() {}
+
   create() {
-    this.element = document.querySelector(this.selector)
+    if (this.selector instanceof window.HTMLElement) this.element = this.selector
+    else this.element = document.querySelector(this.selector)
+
     this.elements = {}
 
     for (let [key, entry] of Object.entries(this.selectorChildren)) {
