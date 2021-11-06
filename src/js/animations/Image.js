@@ -10,6 +10,8 @@ class Image extends Component {
       element,
       elements,
     })
+
+    this.createAnimation()
   }
 
   setAnimation() {
@@ -27,10 +29,10 @@ class Image extends Component {
       {
         scrollTrigger: {
           trigger: this.element,
-          start: '10% 85%',
+          start: 'top bottom',
         },
         clipPath: 'inset(0% 0 0 0)',
-        duration: 2,
+        duration: this.element.clientHeight / 250,
         ease: 'power3.inOut',
       }
     )
