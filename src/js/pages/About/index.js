@@ -7,7 +7,7 @@ class About extends Page {
       element: '.about',
       elements: {
         wrapper: '.about__wrapper',
-        navigation: document.querySelector('.navbar'),
+        navigation: document.querySelector('.navigation'),
       },
     })
   }

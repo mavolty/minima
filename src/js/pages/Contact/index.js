@@ -7,7 +7,7 @@ class Contact extends Page {
       element: '.contact',
       elements: {
         wrapper: '.contact__wrapper',
-        navigation: document.querySelector('.navbar'),
+        navigation: document.querySelector('.navigation'),
       },
     })
   }

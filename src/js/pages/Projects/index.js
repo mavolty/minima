@@ -6,7 +6,7 @@ class Projects extends Page {
       id: 'projects',
       element: '.projects',
       elements: {
-        navigation: document.querySelector('.navbar'),
+        navigation: document.querySelector('.navigation'),
       },
     })
   }

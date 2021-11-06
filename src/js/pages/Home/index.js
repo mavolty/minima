@@ -6,7 +6,7 @@ class Home extends Page {
       id: 'home',
       element: '.home',
       elements: {
-        navigaton: document.querySelector('.navbar'),
+        navigaton: document.querySelector('.navigation'),
         link: '.home__button',
       },
     })
