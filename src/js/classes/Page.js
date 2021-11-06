@@ -16,6 +16,15 @@ class Page {
       paragraphAnimations: '[data-animation="paragraph"]',
       imageAnimations: '[data-animation="image"]',
     }
+
+    this.scroll = {
+      current: 0,
+      target: 0,
+      last: 0,
+      limit: 0,
+    }
+
+    this.mouseEvent = this.scrollHandler.bind(this)
   }
 
   create() {
@@ -48,6 +57,7 @@ class Page {
   }
 
   hide() {
+    console.log('hide')
     this.removeScrolling()
   }
 
@@ -57,17 +67,15 @@ class Page {
   }
 
   resizeHandler() {
-    this.scroll.limit =
-      this.elements.wrapper.clientHeight +
-      this.elements.navigation.clientHeight -
-      window.innerHeight
+    if (this.elements.wrapper)
+      this.scroll.limit = Math.abs(document.body.scrollHeight - window.innerHeight)
   }
 
   updateHandler() {
     this.scroll.target = gsap.utils.clamp(0, this.scroll.limit, this.scroll.target)
-    if (this.scroll.current < 0.01) this.scroll.current = 0
 
     this.scroll.current = gsap.utils.interpolate(this.scroll.current, this.scroll.target, 0.1)
+    if (this.scroll.current < 0.01) this.scroll.current = 0
 
     if (this.elements.wrapper) {
       // this.elements.wrapper.style.transform = `translateY(-${this.scroll.current}px)`
@@ -85,38 +93,37 @@ class Page {
   }
 
   addScrolling() {
-    window.addEventListener('wheel', this.scrollHandler.bind(this))
+    window.addEventListener('wheel', this.mouseEvent)
   }
 
   removeScrolling() {
-    window.removeEventListener('wheel', this.scrollHandler.bind(this))
+    window.removeEventListener('wheel', this.mouseEvent)
   }
 
   createAnimations() {
-    this.titleAnimations = Array.from(this.elements.titleAnimations).map(
-      (element) => new Title({ element })
-    )
+    if (this.elements.titleAnimations)
+      this.titleAnimations = Array.from(this.elements.titleAnimations).map(
+        (element) => new Title({ element })
+      )
 
-    this.paragraphAnimations = Array.from(this.elements.paragraphAnimations).map(
-      (element) => new Paragraph({ element })
-    )
+    if (this.elements.paragraphAnimations)
+      this.paragraphAnimations = Array.from(this.elements.paragraphAnimations).map(
+        (element) => new Paragraph({ element })
+      )
 
-    this.imageAnimations = Array.from(this.elements.imageAnimations).map(
-      (element) => new Image({ element })
-    )
+    if (this.elements.imageAnimations)
+      this.imageAnimations = Array.from(this.elements.imageAnimations).map(
+        (element) => new Image({ element })
+      )
   }
 
   scrollerProxyHandler() {
-    console.log('proxy')
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
-        console.log(value)
-        console.log('top')
         if (arguments.length) document.documentElement.scrollTop = value
         return document.documentElement.scrollTop
       },
       getBoundingClientRect() {
-        console.log('client')
         return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
       },
     })

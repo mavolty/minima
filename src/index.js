@@ -8,10 +8,11 @@ import Preloader from './js/components/Preloader'
 class App {
   constructor() {
     this.createContent()
+    this.createPreloader()
     this.createPage()
 
     this.addLink()
-    this.createPreloader()
+    this.addResize()
     this.update()
   }
 
@@ -24,7 +25,7 @@ class App {
     console.log('100% Loaded')
 
     this.preloader.destroy()
-    this.resize()
+    this.resizeHandler()
     this.page.show()
   }
 
@@ -56,12 +57,14 @@ class App {
       div.innerHTML = html
 
       const divContent = div.querySelector('#root')
-      this.root.setAttribute('data-template', divContent.getAttribute('data-template'))
+      this.template = divContent.getAttribute('data-template')
+
+      this.root.setAttribute('data-template', this.template)
       this.root.innerHTML = divContent.innerHTML
 
       this.page = this.pages[this.template]
       this.page.create()
-      this.resize()
+      this.resizeHandler()
       this.page.show()
 
       this.addLink()
@@ -85,7 +88,11 @@ class App {
     })
   }
 
-  resize() {
+  addResize() {
+    window.addEventListener('resize', this.resizeHandler.bind(this))
+  }
+
+  resizeHandler() {
     if (this.page && this.page.resizeHandler) this.page.resizeHandler()
   }
 
