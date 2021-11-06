@@ -1,8 +1,4 @@
 .detail {
-  @include for-size(phone-only) {
-    padding-inline: calc((100% - (2 * 163px + 16px)) / 2);
-  }
-
   &__wrapper {
     @include grid-container(phone-only);
 

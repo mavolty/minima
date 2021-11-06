@@ -24,8 +24,11 @@
   display: grid;
 
   @if $range == phone-only {
-    grid-template-columns: repeat(2, 163px);
+    grid-template-columns: repeat(2, 149px);
     column-gap: $gap-4;
+    @include for-size(phone-only) {
+      padding-inline: calc((100% - (2 * 149px + 16px)) / 2);
+    }
   } @else if $range == tablet-portrait-up {
     grid-template-columns: 1fr repeat(4, 130px) 1fr;
     column-gap: $gap-4;

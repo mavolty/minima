@@ -2,10 +2,6 @@
   font-size: $fs-md;
   font-feature-settings: 'lnum';
 
-  @include for-size(phone-only) {
-    padding-inline: calc((100% - (2 * 163px + 16px)) / 2);
-  }
-
   &__wrapper {
     & > * + * {
       margin-top: $gap-16;
@@ -159,12 +155,12 @@
     }
   }
 
-  &__address {
-  }
+  // &__address {
+  // }
 
-  &__phone {
-  }
+  // &__phone {
+  // }
 
-  &__email {
-  }
+  // &__email {
+  // }
 }
