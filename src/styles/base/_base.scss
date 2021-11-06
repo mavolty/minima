@@ -16,6 +16,11 @@ body {
   }
 }
 
+#root {
+  position: relative;
+  z-index: z('content');
+}
+
 [data-animation='title'],
 [data-animation='paragraph'] {
   .word,
