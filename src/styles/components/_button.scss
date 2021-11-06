@@ -1,0 +1,54 @@
+%button {
+  color: $clr-dark-ebony;
+  font-family: $ff-merriweather;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+%button-subtitle {
+  font-weight: $fw-light;
+  letter-spacing: 1px;
+}
+
+%button-title {
+  font-size: $fs-xl;
+  @extend %link-reset;
+
+  @include for-size(desktop-up) {
+    font-size: $fs-3xl;
+  }
+}
+
+@mixin button {
+  .button {
+    @extend %button;
+    margin-top: $gap-8;
+    grid-column: 2 / -2;
+    text-align: center;
+
+    @include for-size(tablet-portrait-up) {
+      margin-top: $gap-12;
+      grid-column: 2 / -2;
+    }
+
+    @include for-size(desktop-up) {
+      margin-top: $gap-24;
+      grid-column: 4 / -4;
+    }
+
+    &__subtitle {
+      @extend %button-subtitle;
+    }
+
+    &__link {
+      margin-top: $gap-4;
+      @extend %button-title;
+
+      @include for-size(desktop-up) {
+        margin-top: $gap-5;
+      }
+    }
+  }
+}
