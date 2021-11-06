@@ -65,3 +65,8 @@ block body
                 alt=section.primary["footer-image-2"].alt,
                 data-animation='image'
               )
+
+        if section.slice_type === 'button'
+          .button
+            p.button__subtitle= section.primary.subtitle
+            a.button__link(href=Link(section.primary.link))= section.primary.title
