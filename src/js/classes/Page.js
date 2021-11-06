@@ -78,9 +78,9 @@ class Page {
     if (this.scroll.current < 0.01) this.scroll.current = 0
 
     if (this.elements.wrapper) {
-      // this.elements.wrapper.style.transform = `translateY(-${this.scroll.current}px)`
-      // this.elements.navigation.style.transform = `translateY(-${this.scroll.current}px)`
-      document.body.style.transform = `translateY(-${this.scroll.current}px)`
+      this.elements.wrapper.style.transform = `translateY(-${this.scroll.current}px)`
+      this.elements.navigation.style.transform = `translateY(-${this.scroll.current}px)`
+      // document.body.style.transform = `translateY(-${this.scroll.current}px)`
     }
 
     this.scrollerProxyHandler()
