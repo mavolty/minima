@@ -41,10 +41,12 @@ const initApi = (req) => {
 const requestHandler = async (api) => {
   const metadata = await api.getSingle('metadata')
   const navigation = await api.getSingle('navigation')
+  const contact = await api.getSingle('contact')
 
   return {
     meta: metadata.data,
     navigation: navigation.data,
+    contact: contact.data,
   }
 }
 

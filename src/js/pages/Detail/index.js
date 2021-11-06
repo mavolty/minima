@@ -7,7 +7,7 @@ class Detail extends Page {
       element: '.detail',
       elements: {
         wrapper: '.detail__wrapper',
-        navigation: document.querySelector('.navbar'),
+        navigation: document.querySelector('.navigation'),
       },
     })
   }
