@@ -15,3 +15,14 @@ body {
     font-size: $fs-md;
   }
 }
+
+[data-animation='title'],
+[data-animation='paragraph'] {
+  .word,
+  .char {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.2;
+    vertical-align: top;
+  }
+}

@@ -5,16 +5,15 @@ class Component extends EventEmitter {
     super()
 
     this.selector = element
-    this.selectorChildren = { ...elements }
+    this.selectorChildren = {
+      ...elements,
+    }
 
     this.create()
     this.setAnimation()
-    this.createAnimation()
   }
 
   setAnimation() {}
-
-  createAnimation() {}
 
   create() {
     if (this.selector instanceof window.HTMLElement) this.element = this.selector
