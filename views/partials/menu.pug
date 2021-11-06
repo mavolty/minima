@@ -1,0 +1,13 @@
+section.menu
+  ul.menu__list
+    each item in navigation.list
+      li.menu__item
+        .menu__path
+          a.menu__link(href=Link(item.link))
+            span.menu__front= item.text
+            span.menu__back= item.text
+  .menu__info
+    .menu__contact
+      p.menu__address
+      p.menu__email 
+    .menu__social
