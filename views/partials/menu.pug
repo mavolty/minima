@@ -1,7 +1,7 @@
 section.menu
   ul.menu__list
     each item in navigation.list
-      li.menu__item
+      li.menu__item(data-item=item.text.toLowerCase())
         .menu__path
           a.menu__link(href=Link(item.link))
             span.menu__front= item.text

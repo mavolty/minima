@@ -4,16 +4,27 @@ import Projects from './js/pages/Projects'
 import Detail from './js/pages/Detail'
 import Contact from './js/pages/Contact'
 import Preloader from './js/components/Preloader'
+import Navigation from './js/components/Navigation'
 
 class App {
   constructor() {
     this.createContent()
     this.createPreloader()
     this.createPage()
+    this.createNavigation()
 
     this.addLink()
     this.addResize()
     this.update()
+  }
+
+  createNavigation() {
+    this.navigation = new Navigation({ template: this.template })
+    this.navigation.elements.toggle.addEventListener('click', () => {
+      if (this.navigation.elements.toggle.classList.contains('navigation__label--active'))
+        this.page.hide()
+      else this.page.show()
+    })
   }
 
   createPreloader() {
@@ -58,6 +69,8 @@ class App {
 
       const divContent = div.querySelector('#root')
       this.template = divContent.getAttribute('data-template')
+
+      this.navigation.activePageHandler(this.template)
 
       this.root.setAttribute('data-template', this.template)
       this.root.innerHTML = divContent.innerHTML
