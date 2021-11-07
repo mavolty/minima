@@ -3,89 +3,104 @@
   font-feature-settings: 'lnum';
 
   &__wrapper {
-    & > * + * {
-      margin-top: $gap-16;
-    }
-
     @include grid-container(phone-only);
 
     @include for-size(tablet-portrait-up) {
-      & > * + * {
-        margin-top: $gap-24;
-      }
-
       @include grid-container(tablet-portrait-up);
     }
 
     @include for-size(desktop-up) {
       @include grid-container(desktop-up);
-      grid-template-areas:
-        '. . title . service service service service service service . . . .'
-        '. . title . info info info info info info . . . .'
-        '. . title . form form form form form form . . . .';
     }
   }
 
-  &__title,
-  &__service,
-  &__form,
-  &__info {
+  // &__title,
+  // &__service,
+  // &__form,
+  // &__info {
+  //   grid-column: 1 / -1;
+
+  //   @include for-size(tablet-portrait-up) {
+  //     grid-column: 2 / -2;
+  //   }
+
+  //   @include for-size(desktop-up) {
+  //     grid-column: 5 / -4;
+  //   }
+  // }
+
+  &__main,
+  &__header {
     grid-column: 1 / -1;
 
     @include for-size(tablet-portrait-up) {
       grid-column: 2 / -2;
     }
+
+    @include for-size(desktop-up) {
+      grid-column: 5 / -4;
+    }
+  }
+
+  &__header {
+    @include for-size(desktop-up) {
+      grid-column: 3 / 4;
+    }
+  }
+
+  &__main {
+    & > * + * {
+      margin-top: $gap-16;
+    }
+
+    @include for-size(tablet-portrait-up) {
+      & > * + * {
+        margin-top: $gap-24;
+      }
+    }
   }
 
   &__title {
     @extend %title-2xl;
+    font-family: $ff-raleway;
     text-align: center;
-    text-transform: uppercase;
     line-height: 1.2;
-    letter-spacing: 4px;
 
     @include for-size(desktop-up) {
-      grid-area: title;
-      align-self: flex-start;
-      // grid-column: 2 / 3;
-
-      writing-mode: sideways-lr;
+      font-size: $fs-4xl;
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      writing-mode: vertical-rl;
+      align-self: center;
+      transform: rotate(-180deg);
+      position: absolute;
     }
   }
 
   &__service {
     margin-top: $gap-12;
     @extend %title-lg;
-    text-align: center;
 
     @include for-size(tablet-portrait-up) {
       margin-top: $gap-24;
     }
 
     @include for-size(desktop-up) {
-      // grid-column: 4 / -4;
       margin-top: unset;
-      grid-area: service;
       font-size: $fs-xl;
-      text-align: left;
     }
   }
 
   &__form {
-    grid-column: 1 / -1;
     display: grid;
     @include grid(phone-only);
 
     @include for-size(tablet-portrait-up) {
-      grid-column: 2 / -2;
-
       @include grid(tablet-portrait-up);
     }
 
     @include for-size(desktop-up) {
-      // grid-column: 4 / -4;
-      grid-area: form;
-
       grid-template-columns: repeat(6, 78px);
       gap: $gap-6;
     }
@@ -127,10 +142,10 @@
   }
 
   &__submit {
+    margin-top: $gap-16;
     grid-column: 1 / -1;
 
     @extend %button;
-    margin-top: $gap-16;
     background-color: transparent;
     cursor: pointer;
     border: none;
@@ -150,7 +165,6 @@
     }
 
     @include for-size(desktop-up) {
-      grid-area: info;
       font-size: $fs-lg;
     }
   }
