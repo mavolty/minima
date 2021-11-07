@@ -11,13 +11,11 @@ class Title extends Component {
       element,
       elements,
     })
-
-    this.createAnimation()
   }
 
   setAnimation() {
     gsap.set(this.element, {
-      autoAlpha: 0,
+      autoAlpha: 1,
     })
   }
 
@@ -26,22 +24,14 @@ class Title extends Component {
 
     const chars = split[0].chars
 
-    gsap.set(this.element, {
-      autoAlpha: 1,
-    })
-
     chars.forEach((word, index) => {
       gsap.from(word, {
-        y: '100%',
-      })
-
-      gsap.to(word, {
         scrollTrigger: {
           trigger: this.element,
           start: 'top bottom',
         },
+        y: '100%',
         delay: index * 0.02,
-        y: '0%',
         duration: 1.5,
         ease: 'power3.inOut',
       })

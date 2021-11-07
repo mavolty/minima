@@ -21,13 +21,16 @@ body {
   z-index: z('content');
 }
 
+[data-animation='title'] {
+  line-height: 1.3;
+}
+
 [data-animation='title'],
 [data-animation='paragraph'] {
   .word,
   .char {
     display: inline-block;
     overflow: hidden;
-    line-height: 1.2;
     vertical-align: top;
   }
 }

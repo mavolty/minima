@@ -40,7 +40,7 @@ class Paragraph extends Component {
           trigger: this.element,
           start: 'top bottom',
         },
-        delay: index * 0.15,
+        delay: index * 0.2,
         y: '0%',
         duration: 1,
         autoAlpha: 1,

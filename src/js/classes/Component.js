@@ -11,9 +11,12 @@ class Component extends EventEmitter {
 
     this.create()
     this.setAnimation()
+    this.createAnimation()
   }
 
   setAnimation() {}
+
+  createAnimation() {}
 
   create() {
     if (this.selector instanceof window.HTMLElement) this.element = this.selector
