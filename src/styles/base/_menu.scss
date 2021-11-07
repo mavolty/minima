@@ -6,6 +6,7 @@
   top: 0;
   left: 0;
   z-index: z('menu');
+  transform: translateY(-100%);
 
   @include grid-container(phone-only);
   grid-template-rows: repeat(2, max-content);
@@ -50,8 +51,20 @@
     }
   }
 
-  // &__item {
-  // }
+  &__item {
+    &.menu__item--active {
+      pointer-events: none;
+
+      .menu__front {
+        transform: translateY(-100%) rotateX(89deg);
+      }
+
+      .menu__back {
+        color: $clr-accent-brand;
+        transform: translateY(-100%) rotateX(0deg);
+      }
+    }
+  }
 
   &__path {
     overflow: hidden;
@@ -73,7 +86,7 @@
     }
 
     &:hover .menu__back {
-      color: rgb(255, 82, 82);
+      color: $clr-accent-brand;
       transform: translateY(-100%) rotateX(0deg);
     }
   }
@@ -81,6 +94,7 @@
   &__front,
   &__back {
     display: block;
+    pointer-events: none;
     transition: transform 0.35s cubic-bezier(0.66, 0, 0.34, 1) 0s,
       color 0.35s cubic-bezier(0.48, 0.04, 0.52, 0.96) 0s,
       -webkit-transform 0.35s cubic-bezier(0.66, 0, 0.34, 1) 0s;
