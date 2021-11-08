@@ -24,8 +24,8 @@ class Title extends Component {
 
     const chars = split[0].chars
 
-    chars.forEach((word, index) => {
-      gsap.from(word, {
+    chars.forEach((char, index) => {
+      gsap.from(char, {
         scrollTrigger: {
           trigger: this.element,
           start: 'top bottom',
