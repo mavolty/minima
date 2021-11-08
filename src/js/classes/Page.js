@@ -15,6 +15,7 @@ class Page {
       titleAnimations: '[data-animation="title"]',
       paragraphAnimations: '[data-animation="paragraph"]',
       imageAnimations: '[data-animation="image"]',
+      sourceImages: '[data-src]',
     }
 
     this.scroll = {
@@ -54,6 +55,7 @@ class Page {
     }
 
     this.createAnimations()
+    this.loadImages()
   }
 
   hide() {
@@ -64,6 +66,15 @@ class Page {
   show() {
     console.log('show')
     this.addScrolling()
+  }
+
+  loadImages() {
+    if (this.elements.sourceImages) {
+      Array.from(this.elements.sourceImages).forEach((element) => {
+        const src = element.getAttribute('data-src')
+        element.setAttribute('src', src)
+      })
+    }
   }
 
   resizeHandler() {

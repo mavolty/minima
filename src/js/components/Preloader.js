@@ -21,6 +21,17 @@ class Preloader extends Component {
       element.onload = () => this.assetsLoadedHandler()
       element.src = element.getAttribute('data-src')
     })
+
+    if (this.elements.images.length === 0) {
+      const interval = setInterval(() => {
+        this.length++
+
+        if (this.length === 10) {
+          clearInterval(interval)
+          this.loadedHandler()
+        }
+      }, 200)
+    }
   }
 
   assetsLoadedHandler() {
