@@ -1,5 +1,8 @@
 .navigation {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: z('navigation');
 
   &__wrapper {
@@ -75,16 +78,4 @@
       }
     }
   }
-
-  // &__list {
-  //   display: flex;
-  //   list-style: none;
-  // }
-
-  // &__item {
-  //   padding: 0 1rem;
-  // }
-
-  // &__link {
-  // }
 }

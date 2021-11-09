@@ -17,7 +17,7 @@ body {
 }
 
 #root {
-  position: relative;
+  @extend %cover;
   z-index: z('content');
 }
 

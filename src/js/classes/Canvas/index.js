@@ -28,6 +28,7 @@ class Canvas {
     this.home = new Home({
       gl: this.gl,
       scene: this.scene,
+      size: this.size,
     })
   }
 
@@ -37,6 +38,17 @@ class Canvas {
     this.camera.perspective({
       aspect: window.innerWidth / window.innerHeight,
     })
+
+    const fov = (this.camera.fov * Math.PI) / 180
+    const height = 2 * Math.tan(fov / 2) * this.camera.position.z
+    const width = height * this.camera.aspect
+
+    this.size = {
+      width,
+      height,
+    }
+
+    this.home.onResize({ size: this.size })
   }
 
   updateHandler() {
