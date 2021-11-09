@@ -22,7 +22,10 @@ class Media {
       fragment,
       uniforms: {
         tMap: { value: this.texture },
+        uPlaneSize: { value: [0, 0] },
+        uImageSize: { value: [0, 0] },
       },
+      transparent: true,
     })
   }
 
@@ -32,7 +35,10 @@ class Media {
     this.image = new Image()
     this.image.crossOrigin = 'anonymous'
     this.image.src = this.element.getAttribute('data-src')
-    this.image.onload = () => (this.texture.image = this.image)
+    this.image.onload = () => {
+      this.program.uniforms.uImageSize.value = [this.image.naturalWidth, this.image.naturalHeight]
+      this.texture.image = this.image
+    }
   }
 
   createMesh() {
@@ -43,7 +49,7 @@ class Media {
 
     this.mesh.setParent(this.scene)
 
-    this.mesh.scale.x = 2
+    // this.mesh.scale.x = 2
   }
 
   onResize(size) {
@@ -57,6 +63,8 @@ class Media {
     this.updateScale()
     this.updateX()
     this.updateY()
+
+    this.mesh.program.uniforms.uPlaneSize.value = [this.mesh.scale.x, this.mesh.scale.y]
   }
 
   updateScale() {
@@ -65,18 +73,26 @@ class Media {
 
     this.mesh.scale.x = this.size.width * this.width
     this.mesh.scale.y = this.size.height * this.height
+  }
 
-    this.x = this.bounds.left / window.innerWidth
-    this.y = this.bounds.top / window.innerHeight
+  updateX(x = 0) {
+    this.x = (this.bounds.left + x) / window.innerWidth
 
     this.mesh.position.x = -this.size.width / 2 + this.mesh.scale.x / 2 + this.x * this.size.width
+  }
+
+  updateY(y = 0) {
+    this.y = (this.bounds.top + y) / window.innerHeight
 
     this.mesh.position.y = this.size.height / 2 - this.mesh.scale.y / 2 - this.y * this.size.height
   }
 
-  updateX() {}
+  update(scroll) {
+    if (!this.bounds) return
 
-  updateY() {}
+    this.updateX(scroll.x)
+    this.updateY(scroll.y)
+  }
 }
 
 export default Media

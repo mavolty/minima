@@ -109,6 +109,14 @@ class App {
 
   addResize() {
     window.addEventListener('resize', this.onResize.bind(this))
+
+    window.addEventListener('mouseup', this.onScrollUp.bind(this))
+    window.addEventListener('mousedown', this.onScrollDown.bind(this))
+    window.addEventListener('mousemove', this.onScrollMove.bind(this))
+
+    window.addEventListener('touchup', this.onScrollUp.bind(this))
+    window.addEventListener('touchdown', this.onScrollDown.bind(this))
+    window.addEventListener('touchmove', this.onScrollMove.bind(this))
   }
 
   onResize() {
@@ -122,6 +130,18 @@ class App {
 
     if (this.canvas && this.canvas.updateHandler) this.canvas.updateHandler()
     this.reqAnimation = window.requestAnimationFrame(this.onUpdate.bind(this))
+  }
+
+  onScrollUp(event) {
+    if (this.canvas && this.canvas.scrollUpHandler) this.canvas.scrollUpHandler(event)
+  }
+
+  onScrollDown(event) {
+    if (this.canvas && this.canvas.scrollDownHandler) this.canvas.scrollDownHandler(event)
+  }
+
+  onScrollMove(event) {
+    if (this.canvas && this.canvas.scrollMoveHandler) this.canvas.scrollMoveHandler(event)
   }
 }
 

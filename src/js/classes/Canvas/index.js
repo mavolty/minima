@@ -6,7 +6,20 @@ class Canvas {
     this.createRender()
     this.createCamera()
     this.createScene()
+    this.resizeHandler()
     this.createHome()
+
+    this.x = {
+      start: 0,
+      end: 0,
+      distance: 0,
+    }
+
+    this.y = {
+      start: 0,
+      end: 0,
+      distance: 0,
+    }
   }
 
   createRender() {
@@ -48,14 +61,61 @@ class Canvas {
       height,
     }
 
-    this.home.onResize({ size: this.size })
+    if (this.home)
+      this.home.onResize({
+        size: this.size,
+      })
   }
 
   updateHandler() {
+    if (this.home) this.home.update()
+
     this.renderer.render({
       scene: this.scene,
       camera: this.camera,
     })
+  }
+
+  scrollUpHandler(event) {
+    this.isDown = false
+    const x = event.changedTouches ? event.touches[0].clientX : event.clientX
+    const y = event.changedTouches ? event.touches[0].clientY : event.clientY
+
+    this.x.end = x
+    this.y.end = y
+
+    if (this.home)
+      this.home.onScrollUp({
+        x: this.x,
+        y: this.y,
+      })
+  }
+
+  scrollDownHandler(event) {
+    this.isDown = true
+    this.x.start = event.touches ? event.touches[0].clientX : event.clientX
+    this.y.start = event.touches ? event.touches[0].clientY : event.clientY
+
+    if (this.home)
+      this.home.onScrollDown({
+        x: this.x,
+        y: this.y,
+      })
+  }
+
+  scrollMoveHandler(event) {
+    if (!this.isDown) return
+    const x = event.touches ? event.touches[0].clientX : event.clientX
+    const y = event.touches ? event.touches[0].clientY : event.clientY
+
+    this.x.end = x
+    this.y.end = y
+
+    if (this.home)
+      this.home.onScrollMove({
+        x: this.x,
+        y: this.y,
+      })
   }
 }
 
