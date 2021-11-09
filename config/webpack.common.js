@@ -43,6 +43,9 @@ module.exports = {
       // Pug : Pug loader
       { test: /\.pug$/, use: ['pug-loader'] },
 
+      // GLSL : Raw loader
+      { test: /\.(txt|glsl)$/i, use: ['raw-loader'] },
+
       // Sass : Css & Sass loader
       {
         test: /\.s[ac]ss$/i,

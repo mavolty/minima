@@ -5,6 +5,7 @@ import Detail from './js/pages/Detail'
 import Contact from './js/pages/Contact'
 import Preloader from './js/components/Preloader'
 import Navigation from './js/components/Navigation'
+import Canvas from './js/classes/Canvas'
 
 class App {
   constructor() {
@@ -12,10 +13,15 @@ class App {
     this.createPreloader()
     this.createPage()
     this.createNavigation()
+    this.createCanvas()
 
     this.addLink()
     this.addResize()
-    this.update()
+    this.onUpdate()
+  }
+
+  createCanvas() {
+    this.canvas = new Canvas()
   }
 
   createNavigation() {
@@ -36,7 +42,7 @@ class App {
     console.log('100% Loaded')
 
     this.preloader.destroy()
-    this.resizeHandler()
+    this.onResize()
     this.page.show()
   }
 
@@ -77,7 +83,7 @@ class App {
 
       this.page = this.pages[this.template]
       this.page.create()
-      this.resizeHandler()
+      this.onResize()
       this.page.show()
 
       this.addLink()
@@ -102,17 +108,20 @@ class App {
   }
 
   addResize() {
-    window.addEventListener('resize', this.resizeHandler.bind(this))
+    window.addEventListener('resize', this.onResize.bind(this))
   }
 
-  resizeHandler() {
+  onResize() {
     if (this.page && this.page.resizeHandler) this.page.resizeHandler()
+
+    if (this.canvas && this.canvas.resizeHandler) this.canvas.resizeHandler()
   }
 
-  update() {
+  onUpdate() {
     if (this.page && this.page.updateHandler) this.page.updateHandler()
 
-    this.reqAnimation = window.requestAnimationFrame(this.update.bind(this))
+    if (this.canvas && this.canvas.updateHandler) this.canvas.updateHandler()
+    this.reqAnimation = window.requestAnimationFrame(this.onUpdate.bind(this))
   }
 }
 
