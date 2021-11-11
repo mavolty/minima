@@ -6,10 +6,9 @@ block variables
 block body
   section.home
     .home__wrapper
-      each section in home
-        .home__gallery
-          each img in section.data.gallery
-            figure.home__media
-              img.home__media__image(data-src=img.image.url, alt=img.image.alt)
-        h1.home__heading= section.data.title
-        a.home__button(href=Link(section.data.link))= section.data.label
+      .home__gallery
+        each media in home.gallery
+          figure.home__media
+            img.home__media__image(data-src=media.image.url, alt=media.image.alt)
+      h1.home__heading= home.title
+      a.home__button(href=Link(home.link))= home.label

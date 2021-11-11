@@ -10,10 +10,10 @@ block body
         .project
           h3.project__number= index + 1
           .project__wrapper
-            h2.project__name= project.data.title.text
+            h2.project__name= project.data.title[0].text
             a.project__link(href=Link(project))
               figure.project__media
                 img.project__image(
-                  src=project.data.project_image.url,
+                  data-src=project.data.project_image.url,
                   alt=project.data.project_image.alt
                 )
