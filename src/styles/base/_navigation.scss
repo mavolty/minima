@@ -1,16 +1,18 @@
-.navigation {
+header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: z('navigation');
+}
+
+.navigation {
+  // padding-inline: calc((100% - (2 * 149px + 16px)) / 2);
+  padding-block: 2rem;
+  position: relative;
+  z-index: z('navbar');
 
   &__wrapper {
-    padding-inline: calc((100% - (2 * 149px + 16px)) / 2);
-    padding-block: 2rem;
-    position: relative;
-    z-index: z('navbar');
-
     @include for-size(tablet-portrait-up) {
       padding-inline: calc((100% - (4 * 130px + 16px)) / 2.5);
     }
