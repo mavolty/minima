@@ -8,6 +8,7 @@ class Detail extends Page {
       elements: {
         wrapper: '.detail__wrapper',
         navigation: document.querySelector('.navigation'),
+        footer: '.footer__wrapper',
       },
     })
   }
