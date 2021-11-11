@@ -1,0 +1,61 @@
+.footer {
+  position: absolute;
+  width: 100%;
+  top: 250%;
+  &__wrapper {
+    @include grid-container(desktop-up);
+    row-gap: $gap-16;
+  }
+
+  &__title {
+    color: $clr-dark-ebony;
+    font-family: $ff-merriweather;
+    font-weight: $fw-bold;
+  }
+
+  &__office {
+    grid-column: 2 / 4;
+    &__title {
+    }
+    &__address {
+    }
+  }
+
+  &__social {
+    grid-column: 6 / 8;
+    &__list {
+      @extend %list-reset;
+    }
+    &__item {
+      @extend %item-reset;
+    }
+    &__link {
+      @extend %link-reset;
+    }
+  }
+
+  &__menu {
+    grid-column: 12 / 14;
+    &__list {
+      @extend %list-reset;
+    }
+    &__item {
+      @extend %item-reset;
+    }
+    &__link {
+      @extend %link-reset;
+      font-size: $fs-lg;
+      font-weight: $fw-sb;
+    }
+  }
+
+  &__email {
+    grid-column: 2 / 7;
+    &__title {
+    }
+    &__address {
+      @extend %title-lg;
+      text-decoration: underline;
+    }
+  }
+}
