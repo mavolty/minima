@@ -1,12 +1,13 @@
 section.menu
-  ul.menu__list
-    each item in navigation.list
-      li.menu__item(data-item=item.text.toLowerCase())
+  each section in navigation.body
+    ul.menu__list
+    each menu in section.items
+      li.menu__item(data-item=menu.name.toLowerCase())
         .menu__path
-          a.menu__link(href=Link(item.link))
-            span.menu__front= item.text
-            span.menu__back= item.text
-  .menu__info
+          a.menu__link(href=Link(menu.link))
+            span.menu__front= menu.name
+            span.menu__back= menu.name
+      .menu__info
     .menu__contact
       p.menu__address= contact.address
       p.menu__email= contact.email
