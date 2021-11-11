@@ -71,7 +71,7 @@ app.get('/', async (req, res) => {
   const home = await api.getSingle('home')
 
   res.render('pages/home', {
-    home: home.results,
+    home: home.data,
     ...initial,
   })
 })
@@ -81,14 +81,6 @@ app.get('/about', async (req, res) => {
   const initial = await requestHandler(api)
   const about = await api.getSingle('about')
   const footer = await api.getSingle('footer')
-
-  footer.data.body.forEach((section) => {
-    if (section.slice_type === 'menu') {
-      section.items.forEach((item) => {
-        console.log(item.link)
-      })
-    }
-  })
 
   res.render('pages/about', {
     about: about.data,
@@ -100,7 +92,7 @@ app.get('/about', async (req, res) => {
 app.get('/projects', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
-  const projects = await api.getSingle('projects')
+  const projects = await api.query(Prismic.Predicates.at('document.type', 'project'))
   const footer = await api.getSingle('footer')
 
   res.render('pages/projects', {
