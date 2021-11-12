@@ -1,4 +1,6 @@
 .footer {
+  padding-top: $gap-24;
+  border-top: 1px solid $clr-neutral-swirl;
   &__wrapper {
     @include grid-container(desktop-up);
     row-gap: $gap-16;
@@ -8,6 +10,7 @@
     color: $clr-dark-ebony;
     font-family: $ff-merriweather;
     font-weight: $fw-bold;
+    margin-bottom: $gap-6;
   }
 
   &__office {
@@ -24,6 +27,9 @@
       @extend %list-reset;
     }
     &__item {
+      &:not(:last-child) {
+        margin-bottom: $gap-5;
+      }
       @extend %item-reset;
     }
     &__link {
@@ -37,6 +43,9 @@
       @extend %list-reset;
     }
     &__item {
+      &:not(:last-child) {
+        margin-bottom: $gap-5;
+      }
       @extend %item-reset;
     }
     &__link {
@@ -53,6 +62,19 @@
     &__address {
       @extend %title-lg;
       text-decoration: underline;
+    }
+  }
+
+  &__allrights {
+    grid-column: 2 / -2;
+    display: flex;
+    justify-content: space-between;
+    padding-block: $gap-12;
+    border-top: 1px solid $clr-neutral-swirl;
+
+    &__brand {
+    }
+    &__copyright {
     }
   }
 }
