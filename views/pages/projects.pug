@@ -4,16 +4,17 @@ block variables
   - var template = "projects"
 
 block body
-  section.projects
+  section.projects(data-animation='projects')
     .projects__wrapper
       each project, index in projects
-        .project
-          h3.project__number= index + 1
-          .project__wrapper
+        .project(data-animation='wrapper-projects')
+          .project__info(data-animation='info-projects')
+            h3.project__number= index + 1
             h2.project__name= project.data.title[0].text
-            a.project__link(href=Link(project))
-              figure.project__media
-                img.project__image(
-                  data-src=project.data.project_image.url,
-                  alt=project.data.project_image.alt
-                )
+          a.project__link(href=Link(project), data-animation='link-projects')
+            figure.project__media(data-animation='media-projects')
+              img.project__image(
+                data-animation='image-projects',
+                data-src=project.data.project_image.url,
+                alt=project.data.project_image.alt
+              )
