@@ -1,0 +1,27 @@
+footer.footer
+  .footer__wrapper
+    each section in footer.body
+      if section.slice_type === 'office'
+        .footer__office
+          h3.footer__office__title.footer__title= section.primary.title
+          p.footer__office__address= section.primary.address
+
+      if section.slice_type === 'social'
+        .footer__social
+          h3.footer__social__title.footer__title= section.primary.title
+          ul.footer__social__list
+            each social in section.items
+              li.footer__social__item
+                a.footer__social__link(href=social.link)= social.name
+
+      if section.slice_type === 'menu'
+        .footer__menu
+          ul.footer__menu__list
+            each menu in section.items
+              li.footer__menu__item
+                a.footer__menu__link(href=Link(menu.link))= menu.name
+
+      if section.slice_type === 'email'
+        .footer__email
+          h3.footer__email__title.footer__title= section.primary.title
+          p.footer__email__address= section.primary.email

@@ -68,11 +68,10 @@ app.use(express.static(path.join(__dirname + '/public')))
 app.get('/', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
-
-  const home = await api.query(Prismic.Predicates.at('document.type', 'home'))
+  const home = await api.getSingle('home')
 
   res.render('pages/home', {
-    home: home.results,
+    home: home.data,
     ...initial,
   })
 })
@@ -80,11 +79,12 @@ app.get('/', async (req, res) => {
 app.get('/about', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
-
   const about = await api.getSingle('about')
+  const footer = await api.getSingle('footer')
 
   res.render('pages/about', {
     about: about.data,
+    footer: footer.data,
     ...initial,
   })
 })
@@ -93,9 +93,11 @@ app.get('/projects', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
   const projects = await api.query(Prismic.Predicates.at('document.type', 'project'))
+  const footer = await api.getSingle('footer')
 
   res.render('pages/projects', {
     projects: projects.results,
+    footer: footer.data,
     ...initial,
   })
 })
@@ -115,11 +117,11 @@ app.get('/contact', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
   const contact = await api.getSingle('contact')
-
-  console.log(contact.data)
+  const footer = await api.getSingle('footer')
 
   res.render('pages/contact', {
     contact: contact.data,
+    footer: footer.data,
     ...initial,
   })
 })

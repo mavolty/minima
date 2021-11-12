@@ -8,6 +8,7 @@ class Contact extends Page {
       elements: {
         wrapper: '.contact__wrapper',
         navigation: document.querySelector('.navigation'),
+        footer: '.footer__wrapper',
       },
     })
   }

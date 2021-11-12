@@ -3,3 +3,12 @@
   text-decoration: none;
   display: inline-block;
 }
+
+%list-reset {
+  padding: 0;
+  margin: 0;
+}
+
+%item-reset {
+  list-style: none;
+}
