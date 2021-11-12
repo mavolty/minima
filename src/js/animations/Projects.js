@@ -9,8 +9,6 @@ class Projects extends Component {
       element,
       elements,
     })
-    console.log(element)
-    console.log(elements)
 
     this.createAnimation()
   }
@@ -28,7 +26,6 @@ class Projects extends Component {
           trigger: element,
           horizontal: true,
           start: 'left right',
-          markers: true,
           scrub: true,
         },
         xPercent: -10,
@@ -41,11 +38,10 @@ class Projects extends Component {
           trigger: element,
           horizontal: true,
           start: 'left right',
-          markers: true,
           scrub: true,
         },
         force3D: true,
-        transform: 'translate3d(-125px, 0, 0)',
+        transform: 'translate3d(-180px, 0, 0)',
       })
     })
   }
