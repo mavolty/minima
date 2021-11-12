@@ -17,8 +17,9 @@ body {
 }
 
 #root {
-  @extend %cover;
+  position: relative;
   z-index: z('content');
+  margin-block: $gap-24;
 }
 
 [data-animation='title'] {

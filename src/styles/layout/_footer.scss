@@ -1,7 +1,4 @@
 .footer {
-  position: absolute;
-  width: 100%;
-  top: 250%;
   &__wrapper {
     @include grid-container(desktop-up);
     row-gap: $gap-16;
@@ -14,7 +11,7 @@
   }
 
   &__office {
-    grid-column: 2 / 4;
+    grid-column: 2 / 6;
     &__title {
     }
     &__address {
@@ -22,7 +19,7 @@
   }
 
   &__social {
-    grid-column: 6 / 8;
+    grid-column: 7 / 9;
     &__list {
       @extend %list-reset;
     }
