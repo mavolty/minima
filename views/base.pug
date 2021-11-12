@@ -43,8 +43,7 @@ html(lang='id')
     main#root(data-template=template)
       block body
 
-    if (template === 'about' || template === 'detail' || template === 'contact')
-      include ./partials/footer
+    block footer
 
     script
       include ../dist/main.js
