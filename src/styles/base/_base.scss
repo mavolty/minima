@@ -19,7 +19,12 @@ body {
 #root {
   position: relative;
   z-index: z('content');
-  margin-block: $gap-24;
+}
+
+[data-template='detail'],
+[data-template='about'],
+[data-template='contact'] {
+  margin-block: 10rem;
 }
 
 [data-animation='title'] {
