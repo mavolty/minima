@@ -10,6 +10,10 @@ class Media {
     this.scene = scene
     this.geometry = geometry
     this.size = size
+    this.extra = {
+      x: 0,
+      y: 0,
+    }
 
     this.createTexture()
     this.createProgram()
@@ -49,7 +53,7 @@ class Media {
 
     this.mesh.setParent(this.scene)
 
-    // this.mesh.scale.x = 2
+    this.mesh.scale.x = 2
   }
 
   onResize(size) {
@@ -78,13 +82,15 @@ class Media {
   updateX(x = 0) {
     this.x = (this.bounds.left + x) / window.innerWidth
 
-    this.mesh.position.x = -this.size.width / 2 + this.mesh.scale.x / 2 + this.x * this.size.width
+    this.mesh.position.x =
+      -this.size.width / 2 + this.mesh.scale.x / 2 + this.x * this.size.width + this.extra.x
   }
 
   updateY(y = 0) {
     this.y = (this.bounds.top + y) / window.innerHeight
 
-    this.mesh.position.y = this.size.height / 2 - this.mesh.scale.y / 2 - this.y * this.size.height
+    this.mesh.position.y =
+      this.size.height / 2 - this.mesh.scale.y / 2 - this.y * this.size.height + this.extra.y
   }
 
   update(scroll) {

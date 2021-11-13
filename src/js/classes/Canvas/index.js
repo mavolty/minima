@@ -23,7 +23,9 @@ class Canvas {
   }
 
   createRender() {
-    this.renderer = new Renderer()
+    this.renderer = new Renderer({
+      alpha: true,
+    })
     this.gl = this.renderer.gl
     document.body.appendChild(this.gl.canvas)
   }
