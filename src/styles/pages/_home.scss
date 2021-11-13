@@ -8,79 +8,81 @@
 
   &__gallery {
     position: relative;
+    width: 133.875rem;
+    height: 98.5rem;
     visibility: hidden;
   }
 
   &__media {
     position: absolute;
     &:nth-child(1) {
-      width: 40.4375rem;
-      height: 19.125rem;
-      top: -13.5rem;
-      left: 3.4375rem;
+      width: 52.125rem;
+      height: 38.625rem;
+      top: -18rem;
+      left: 2.5rem;
     }
 
     &:nth-child(2) {
-      width: 19.125rem;
+      width: 20.625rem;
       height: 33.375rem;
-      top: -20.625rem;
-      left: 46.125rem;
+      top: -19.875rem;
+      left: 57.5rem;
     }
 
     &:nth-child(3) {
-      width: 19.125rem;
-      height: 31rem;
-      top: -4rem;
-      left: 67.5rem;
+      width: 52.25rem;
+      height: 26.25rem;
+      top: -14.25rem;
+      left: 81.25rem;
     }
 
     &:nth-child(4) {
-      width: 33.375rem;
-      height: 33.375rem;
-      top: 7.875rem;
-      left: 3.4375rem;
+      width: 25.5rem;
+      height: 46.875rem;
+      top: 27.75rem;
+      left: -10.375rem;
     }
 
     &:nth-child(5) {
-      width: 26.25rem;
-      height: 12rem;
-      top: 15rem;
-      left: 39rem;
+      width: 44.25rem;
+      height: 23.625rem;
+      top: 25.5rem;
+      left: 18.125rem;
     }
 
     &:nth-child(6) {
-      width: 26.25rem;
-      height: 12rem;
-      top: 29.25rem;
-      left: 60.4375rem;
+      width: 36.25rem;
+      height: 18.75rem;
+      top: 17.25rem;
+      left: 65.5rem;
     }
 
     &:nth-child(7) {
-      width: 19.125rem;
-      height: 19.125rem;
-      top: 29.25rem;
-      left: 39.0625rem;
+      width: 15.75rem;
+      height: 26.25rem;
+      top: 13.5rem;
+      left: 104.875rem;
     }
 
     &:nth-child(8) {
-      width: 19.125rem;
-      height: 26.25rem;
-      top: 43.5rem;
-      left: 3.4375rem;
+      width: 39.375rem;
+      height: 21.563rem;
+      top: 54rem;
+      left: 20.875rem;
     }
 
     &:nth-child(9) {
-      width: 40.5rem;
-      height: 19.125rem;
-      top: 50.625rem;
-      left: 24.75rem;
+      width: 20.625rem;
+      height: 35.625rem;
+      top: 39.75rem;
+      left: 65.5rem;
     }
 
     &:nth-child(10) {
-      width: 19.125rem;
-      height: 26.25rem;
-      top: 43.5rem;
-      left: 67.5rem;
+      width: 28.5rem;
+      height: 40.5rem;
+      top: 42rem;
+      left: 89.125rem;
     }
 
     &__image {
@@ -100,6 +102,9 @@
   }
 
   &__button {
+    @extend %link-reset;
+    color: $clr-dark-ebony;
+    font-weight: $fw-sb;
     position: absolute;
     bottom: 5%;
     left: 50%;
