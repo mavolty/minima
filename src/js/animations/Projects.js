@@ -41,7 +41,7 @@ class Projects extends Component {
           scrub: true,
         },
         force3D: true,
-        transform: 'translate3d(-180px, 0, 0)',
+        transform: 'translate3d(-140px, 0, 0)',
       })
     })
   }
