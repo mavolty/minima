@@ -26,16 +26,18 @@ class App {
 
   createNavigation() {
     this.navigation = new Navigation({ template: this.template })
-    this.navigation.elements.toggle.addEventListener('click', () => {
-      if (this.navigation.elements.toggle.classList.contains('navigation__label--active'))
-        this.page.hide()
-      else this.page.show()
-    })
+    this.navigation.elements.toggle.addEventListener('click', this.navigationHandler.bind(this))
   }
 
   createPreloader() {
     this.preloader = new Preloader()
     this.preloader.once('completed', this.preloadHandler.bind(this))
+  }
+
+  navigationHandler() {
+    this.navigation.elements.toggle.classList.contains('navigation__label--active')
+      ? this.page.hide()
+      : this.page.show()
   }
 
   preloadHandler() {
