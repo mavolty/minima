@@ -120,6 +120,11 @@ class Home {
     })
   }
 
+  onWheel({ pixelX, pixelY }) {
+    this.x.target -= pixelX
+    this.y.target -= pixelY
+  }
+
   onScrollUp({ x, y }) {}
 
   onScrollDown({ x, y }) {

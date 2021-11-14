@@ -78,6 +78,10 @@ class Canvas {
     })
   }
 
+  wheelHandler(event) {
+    if (this.home) this.home.onWheel(event)
+  }
+
   scrollUpHandler(event) {
     this.isDown = false
     const x = event.changedTouches ? event.touches[0].clientX : event.clientX
