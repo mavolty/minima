@@ -6,6 +6,7 @@ import Contact from './js/pages/Contact'
 import Preloader from './js/components/Preloader'
 import Navigation from './js/components/Navigation'
 import Canvas from './js/classes/Canvas'
+import normalizeWheel from 'normalize-wheel'
 
 class App {
   constructor() {
@@ -17,6 +18,7 @@ class App {
 
     this.addLink()
     this.addResize()
+    this.addWheel()
     this.onUpdate()
   }
 
@@ -36,8 +38,8 @@ class App {
 
   navigationHandler() {
     this.navigation.elements.toggle.classList.contains('navigation__label--active')
-      ? this.page.hide()
-      : this.page.show()
+      ? this.page.removeWheel()
+      : this.page.addWheel()
   }
 
   preloadHandler() {
@@ -67,7 +69,9 @@ class App {
   }
 
   async linkHandler(target) {
-    this.page.hide()
+    if (this.navLink) setTimeout(() => this.page.hide(), 800)
+    else this.page.hide()
+
     const request = await window.fetch(target)
 
     try {
@@ -100,11 +104,10 @@ class App {
     links.forEach((link) => {
       link.onclick = (event) => {
         event.preventDefault()
-        const {
-          target: { href },
-        } = event
+        const { target } = event
+        this.navLink = target.classList.contains('menu__link')
 
-        this.linkHandler(href)
+        this.linkHandler(target.href)
       }
     })
   }
@@ -121,6 +124,14 @@ class App {
     window.addEventListener('touchmove', this.onScrollMove.bind(this))
   }
 
+  addWheel() {
+    window.addEventListener('wheel', this.onWheel.bind(this))
+  }
+
+  removeWheel() {
+    window.removeEventListener('wheel', this.onWheel.bind(this))
+  }
+
   onResize() {
     if (this.page && this.page.resizeHandler) this.page.resizeHandler()
 
@@ -132,6 +143,13 @@ class App {
 
     if (this.canvas && this.canvas.updateHandler) this.canvas.updateHandler()
     this.reqAnimation = window.requestAnimationFrame(this.onUpdate.bind(this))
+  }
+
+  onWheel(event) {
+    const normalized = normalizeWheel(event)
+    if (this.page && this.page.wheelHandler) this.page.wheelHandler(normalized)
+
+    if (this.canvas && this.canvas.wheelHandler) this.canvas.wheelHandler(normalized)
   }
 
   onScrollUp(event) {
