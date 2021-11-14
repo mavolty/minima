@@ -11,31 +11,27 @@ class Image extends Component {
       elements,
     })
 
-    this.createAnimation()
-  }
-
-  setAnimation() {
     gsap.set(this.element, {
       clipPath: 'inset(100% 0 0 0)',
     })
+
+    this.createAnimation()
   }
 
   createAnimation() {
-    gsap.fromTo(
-      this.element,
-      {
-        clipPath: 'inset(100% 0 0 0)',
+    gsap.from(this.element, {
+      clipPath: 'inset(100% 0 0 0)',
+    })
+
+    gsap.to(this.element, {
+      scrollTrigger: {
+        trigger: this.element,
+        start: 'top bottom',
       },
-      {
-        scrollTrigger: {
-          trigger: this.element,
-          start: 'top bottom',
-        },
-        clipPath: 'inset(0% 0 0 0)',
-        duration: this.element.clientHeight / 250,
-        ease: 'power3.inOut',
-      }
-    )
+      clipPath: 'inset(0% 0 0 0)',
+      duration: this.element.clientHeight / 250,
+      ease: 'power3.inOut',
+    })
 
     gsap.to(this.element, {
       scrollTrigger: {
@@ -43,7 +39,7 @@ class Image extends Component {
         start: 'top center',
         scrub: true,
       },
-      y: '-10%',
+      y: '-15%',
     })
   }
 }
