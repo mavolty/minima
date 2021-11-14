@@ -12,24 +12,21 @@ class Paragraph extends Component {
       elements,
     })
 
+    this.split = Splitting({ target: this.element, by: 'lines' })
+    this.words = this.split[0].lines
+
+    this.setAnimation()
     this.createAnimation()
   }
 
   setAnimation() {
-    gsap.set(this.element, {
+    gsap.set(this.words, {
       autoAlpha: 0,
     })
   }
 
   createAnimation() {
-    const split = Splitting({ target: this.element, by: 'lines' })
-    const words = split[0].lines
-
-    gsap.set(this.element, {
-      autoAlpha: 1,
-    })
-
-    words.forEach((word, index) => {
+    this.words.forEach((word, index) => {
       gsap.from(word, {
         autoAlpha: 0,
         y: '100%',
@@ -38,10 +35,8 @@ class Paragraph extends Component {
       gsap.to(word, {
         scrollTrigger: {
           trigger: this.element,
-          start: 'top bottom',
         },
         delay: index * 0.2,
-        y: '0%',
         duration: 1,
         autoAlpha: 1,
         ease: 'power3.inOut',
