@@ -29,8 +29,6 @@ class Page {
       last: 0,
       limit: 0,
     }
-
-    this.mouseEvent = this.scrollHandler.bind(this)
   }
 
   create() {
@@ -93,6 +91,10 @@ class Page {
     }
   }
 
+  wheelHandler({ pixelY }) {
+    this.scroll.target += pixelY
+  }
+
   resizeHandler() {
     if (this.elements.wrapper)
       this.scroll.limit = Math.abs(document.body.scrollHeight - window.innerHeight)
@@ -117,20 +119,6 @@ class Page {
 
     this.scrollerProxyHandler()
   }
-
-  scrollHandler(event) {
-    const { deltaY } = event
-
-    this.scroll.target += deltaY
-  }
-
-  addScrolling() {
-    window.addEventListener('wheel', this.mouseEvent)
-  }
-
-  removeScrolling() {
-    window.removeEventListener('wheel', this.mouseEvent)
-  } 
 
   createAnimations() {
     if (this.elements.titleAnimations)
