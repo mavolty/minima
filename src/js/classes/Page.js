@@ -64,13 +64,24 @@ class Page {
   }
 
   hide() {
-    console.log('hide')
-    this.removeScrolling()
+    gsap.to(document.body, {
+      duration: 0.5,
+      opacity: 0,
+      onComplete: () => {
+        window.removeEventListener('wheel', this.wheelHandler.bind(this))
+      },
+    })
   }
 
   show() {
-    console.log('show')
-    this.addScrolling()
+    gsap.to(document.body, {
+      duration: 1,
+      delay: 1,
+      opacity: 1,
+      onComplete: () => {
+        this.addEventListener('wheel', this.wheelHandler.bind(this))
+      },
+    })
   }
 
   loadImages() {
@@ -119,7 +130,7 @@ class Page {
 
   removeScrolling() {
     window.removeEventListener('wheel', this.mouseEvent)
-  }
+  } 
 
   createAnimations() {
     if (this.elements.titleAnimations)
