@@ -44,23 +44,21 @@
       margin-top: $gap-4;
     }
 
-    @include for-size(tablet-portrait-up) {
-      margin-top: $gap-5;
-    }
-
-    @include for-size(desktop-up) {
-      margin-top: $gap-6;
-    }
-
+    grid-column: 1 / -1;
     @extend %list-reset;
     position: relative;
-    grid-column: 1 / -1;
 
     @include for-size(tablet-portrait-up) {
+      & > * + * {
+        margin-top: $gap-5;
+      }
       grid-column: 2 / -2;
     }
 
     @include for-size(desktop-up) {
+      & > * + * {
+        margin-top: $gap-6;
+      }
       grid-column: 2 / 7;
     }
   }
@@ -79,6 +77,7 @@
       }
     }
 
+    position: relative;
     @extend %item-reset;
   }
 
@@ -86,6 +85,7 @@
     overflow: hidden;
     line-height: 0.8;
     perspective: 3000px;
+    position: relative;
   }
 
   &__link {
