@@ -4,6 +4,7 @@ import Title from '../animations/Title'
 import Image from '../animations/Image'
 import Projects from '../animations/Projects'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import normalizeWheel from 'normalize-wheel'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -29,6 +30,8 @@ class Page {
       last: 0,
       limit: 0,
     }
+
+    this.wheelEvent = this.wheelHandler.bind(this)
   }
 
   create() {
@@ -66,7 +69,7 @@ class Page {
       duration: 0.5,
       opacity: 0,
       onComplete: () => {
-        window.removeEventListener('wheel', this.wheelHandler.bind(this))
+        this.removeWheel()
       },
     })
   }
@@ -77,7 +80,7 @@ class Page {
       delay: 1,
       opacity: 1,
       onComplete: () => {
-        this.addEventListener('wheel', this.wheelHandler.bind(this))
+        this.addWheel()
       },
     })
   }
@@ -91,8 +94,17 @@ class Page {
     }
   }
 
-  wheelHandler({ pixelY }) {
-    this.scroll.target += pixelY
+  wheelHandler(event) {
+    const normalized = normalizeWheel(event)
+    this.scroll.target += normalized.pixelY
+  }
+
+  addWheel() {
+    window.addEventListener('wheel', this.wheelEvent)
+  }
+
+  removeWheel() {
+    window.removeEventListener('wheel', this.wheelEvent)
   }
 
   resizeHandler() {

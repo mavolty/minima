@@ -18,7 +18,6 @@ class App {
 
     this.addLink()
     this.addResize()
-    this.addWheel()
     this.onUpdate()
   }
 
@@ -115,6 +114,8 @@ class App {
   addResize() {
     window.addEventListener('resize', this.onResize.bind(this))
 
+    window.addEventListener('wheel', this.onWheel.bind(this))
+
     window.addEventListener('mouseup', this.onScrollUp.bind(this))
     window.addEventListener('mousedown', this.onScrollDown.bind(this))
     window.addEventListener('mousemove', this.onScrollMove.bind(this))
@@ -122,14 +123,6 @@ class App {
     window.addEventListener('touchup', this.onScrollUp.bind(this))
     window.addEventListener('touchdown', this.onScrollDown.bind(this))
     window.addEventListener('touchmove', this.onScrollMove.bind(this))
-  }
-
-  addWheel() {
-    window.addEventListener('wheel', this.onWheel.bind(this))
-  }
-
-  removeWheel() {
-    window.removeEventListener('wheel', this.onWheel.bind(this))
   }
 
   onResize() {
@@ -147,7 +140,6 @@ class App {
 
   onWheel(event) {
     const normalized = normalizeWheel(event)
-    if (this.page && this.page.wheelHandler) this.page.wheelHandler(normalized)
 
     if (this.canvas && this.canvas.wheelHandler) this.canvas.wheelHandler(normalized)
   }
