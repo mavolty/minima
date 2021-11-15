@@ -83,7 +83,6 @@
 
   &__path {
     overflow: hidden;
-    line-height: 0.8;
     perspective: 3000px;
     position: relative;
   }
@@ -93,6 +92,8 @@
     @extend %title-4xl;
     font-family: $ff-raleway;
     font-weight: $fw-sb;
+    line-height: 0.9;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     display: inline-block;
     perspective: 3000px;
