@@ -99,6 +99,10 @@ class Media {
     this.updateX(scroll.x)
     this.updateY(scroll.y)
   }
+
+  destroy() {
+    this.scene.removeChild(this.mesh)
+  }
 }
 
 export default Media

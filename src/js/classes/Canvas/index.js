@@ -2,12 +2,12 @@ import { Renderer, Camera, Transform } from 'ogl'
 import Home from './Home'
 
 class Canvas {
-  constructor() {
+  constructor({ template }) {
     this.createRender()
     this.createCamera()
     this.createScene()
     this.resizeHandler()
-    this.createHome()
+    this.onChange(template)
 
     this.x = {
       start: 0,
@@ -27,7 +27,6 @@ class Canvas {
       alpha: true,
     })
     this.gl = this.renderer.gl
-    document.body.appendChild(this.gl.canvas)
   }
 
   createScene() {
@@ -45,6 +44,23 @@ class Canvas {
       scene: this.scene,
       size: this.size,
     })
+    document.body.appendChild(this.gl.canvas)
+  }
+
+  destroyHome() {
+    if (!this.home) return
+
+    this.home.destroy()
+    this.home = null
+    document.body.removeChild(this.gl.canvas)
+  }
+
+  onChange(template) {
+    if (template === 'home') {
+      this.createHome()
+    } else {
+      this.destroyHome()
+    }
   }
 
   resizeHandler() {

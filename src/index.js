@@ -22,7 +22,9 @@ class App {
   }
 
   createCanvas() {
-    this.canvas = new Canvas()
+    this.canvas = new Canvas({
+      template: this.template,
+    })
   }
 
   createNavigation() {
@@ -81,10 +83,12 @@ class App {
       const divContent = div.querySelector('#root')
       this.template = divContent.getAttribute('data-template')
 
-      this.navigation.activePageHandler(this.template)
+      this.navigation.onChange(this.template)
 
       this.root.setAttribute('data-template', this.template)
       this.root.innerHTML = divContent.innerHTML
+
+      this.canvas.onChange(this.template)
 
       this.page = this.pages[this.template]
       this.page.create()

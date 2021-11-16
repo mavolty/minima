@@ -8,8 +8,9 @@ class Home {
     this.imagesElement = Array.from(document.querySelectorAll('.home__media__image'))
     this.galleryElement = document.querySelector('.home__gallery')
     this.size = size
+    this.scene = scene
     this.group = new Transform()
-    this.group.setParent(scene)
+    this.group.setParent(this.scene)
 
     this.createGeometry()
     this.createGallery()
@@ -118,6 +119,11 @@ class Home {
 
       image.update(this.scroll)
     })
+  }
+
+  destroy() {
+    this.scene.removeChild(this.group)
+    this.images.map((image) => image.destroy())
   }
 
   onWheel({ pixelX, pixelY }) {

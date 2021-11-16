@@ -22,10 +22,10 @@ class Navigation extends Component {
       item.addEventListener('click', this.itemHandler.bind(this))
     )
 
-    this.activePageHandler(template)
+    this.onChange(template)
   }
 
-  activePageHandler(template) {
+  onChange(template) {
     this.elements.items.forEach((item) => {
       if (template === 'detail') {
         item.getAttribute('data-item') === 'projects' && item.classList.add('menu__item--active')
