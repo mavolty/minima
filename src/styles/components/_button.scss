@@ -25,7 +25,7 @@
   .button {
     @extend %button;
     margin-top: $gap-8;
-    grid-column: 2 / -2;
+    grid-column: 1 / -1;
     text-align: center;
 
     @include for-size(tablet-portrait-up) {
