@@ -42,11 +42,13 @@ const requestHandler = async (api) => {
   const metadata = await api.getSingle('metadata')
   const navigation = await api.getSingle('navigation')
   const contact = await api.getSingle('contact')
+  const footer = await api.getSingle('footer')
 
   return {
     meta: metadata.data,
     navigation: navigation.data,
     contact: contact.data,
+    footer: footer.data,
   }
 }
 
@@ -80,11 +82,9 @@ app.get('/about', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
   const about = await api.getSingle('about')
-  const footer = await api.getSingle('footer')
 
   res.render('pages/about', {
     about: about.data,
-    footer: footer.data,
     ...initial,
   })
 })
@@ -104,11 +104,9 @@ app.get('/projects/:uid', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
   const project = await api.getByUID('detail', req.params.uid)
-  const footer = await api.getSingle('footer')
 
   res.render('pages/detail', {
     project: project.data,
-    footer: footer.data,
 
     ...initial,
   })
@@ -118,11 +116,9 @@ app.get('/contact', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
   const contact = await api.getSingle('contact')
-  const footer = await api.getSingle('footer')
 
   res.render('pages/contact', {
     contact: contact.data,
-    footer: footer.data,
     ...initial,
   })
 })
