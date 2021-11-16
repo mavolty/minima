@@ -40,7 +40,7 @@
 
 @mixin grid($range) {
   @if $range == phone-only {
-    grid-template-columns: repeat(2, 163px);
+    grid-template-columns: repeat(2, 149px);
     column-gap: $gap-4;
   } @else if $range == tablet-portrait-up {
     grid-template-columns: repeat(4, 130px);
