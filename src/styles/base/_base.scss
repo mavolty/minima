@@ -27,6 +27,13 @@ body {
   margin-block: 10rem;
 }
 
+[data-template='home'],
+[data-template='projects'] {
+  & + .footer {
+    display: none;
+  }
+}
+
 [data-animation='title'] {
   line-height: 1.3;
 }
