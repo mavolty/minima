@@ -7,20 +7,13 @@
 }
 
 .navigation {
-  // padding-inline: calc((100% - (2 * 149px + 16px)) / 2);
+  padding-inline: clamp(.5rem, 8vw, 12rem);
   padding-block: 2rem;
   position: relative;
   z-index: z('navbar');
 
-  &__wrapper {
-    @include for-size(tablet-portrait-up) {
-      padding-inline: calc((100% - (4 * 130px + 16px)) / 2.5);
-    }
-
-    @include for-size(desktop-up) {
-      padding-inline: calc((100% - (12 * 78px + 24px)) / 2.5);
-    }
-  }
+  // &__wrapper {
+  // }
 
   &__bar {
     display: flex;
