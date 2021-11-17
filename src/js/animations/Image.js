@@ -29,7 +29,7 @@ class Image extends Component {
         start: 'top bottom',
       },
       clipPath: 'inset(0% 0 0 0)',
-      duration: this.element.clientHeight / 250,
+      duration: (0.3 / 100) * this.element.clientHeight,
       ease: 'power3.inOut',
     })
 
@@ -39,7 +39,7 @@ class Image extends Component {
         start: 'top center',
         scrub: true,
       },
-      y: '-15%',
+      y: 15,
     })
   }
 }
