@@ -1,6 +1,7 @@
 import Component from '../classes/Component'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 gsap.registerPlugin(ScrollTrigger)
 
 class Projects extends Component {
@@ -10,6 +11,7 @@ class Projects extends Component {
       elements,
     })
 
+    this.setAnimation()
     this.createAnimation()
   }
 
@@ -17,9 +19,18 @@ class Projects extends Component {
     gsap.set(this.elements.info, {
       xPercent: 20,
     })
+    gsap.set(this.elements.image, {
+      clipPath: 'inset(100% 0 0 0)',
+    })
   }
 
   createAnimation() {
+    gsap.to(this.elements.image, {
+      clipPath: 'inset(0% 0 0 0)',
+      duration: 1,
+      ease: 'power3.inOut',
+    })
+
     this.elements.info.forEach((element) => {
       gsap.to(element, {
         scrollTrigger: {
@@ -41,7 +52,7 @@ class Projects extends Component {
           scrub: true,
         },
         force3D: true,
-        transform: 'translate3d(-140px, 0, 0)',
+        transform: `translate3d(-75px, 0, 0)`,
       })
     })
   }
