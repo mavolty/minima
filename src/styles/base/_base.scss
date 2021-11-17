@@ -24,7 +24,11 @@ body {
 [data-template='detail'],
 [data-template='about'],
 [data-template='contact'] {
-  margin-block: 10rem;
+  margin-block: $gap-32;
+
+  @include for-size(desktop-up) {
+    margin-block: $gap-40;
+  }
 }
 
 [data-template='home'],
