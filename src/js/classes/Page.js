@@ -60,8 +60,8 @@ class Page {
       }
     }
 
-    this.createAnimations()
     this.loadImages()
+    this.createAnimations()
   }
 
   hide() {
@@ -76,8 +76,8 @@ class Page {
 
   show() {
     gsap.to(document.body, {
-      duration: 1,
-      delay: 1,
+      duration: 0.5,
+      delay: 0.5,
       opacity: 1,
       onComplete: () => {
         this.addWheel()
@@ -95,8 +95,8 @@ class Page {
   }
 
   wheelHandler(event) {
-    const normalized = normalizeWheel(event)
-    this.scroll.target += normalized.pixelY
+    const normalizedValue = normalizeWheel(event)
+    this.scroll.target += normalizedValue.pixelY * 0.75
   }
 
   addWheel() {
