@@ -22,21 +22,20 @@
 }
 
 .introduction {
-  margin-top: $gap-4;
+  margin-top: $gap-8;
   grid-column: 1 / -1;
   display: grid;
 
   @include grid(phone-only);
 
   @include for-size(tablet-portrait-up) {
+    margin-top: $gap-12;
     grid-column: 2 / -2;
-    margin-top: $gap-6;
 
     @include grid(tablet-portrait-up);
   }
 
   @include for-size(desktop-up) {
-    margin-top: $gap-8;
     align-items: center;
 
     @include grid(desktop-up);
@@ -64,11 +63,11 @@
   }
 
   &__article {
-    margin-top: $gap-6;
+    margin-top: $gap-8;
     grid-column: 1 / -1;
 
     @include for-size(tablet-portrait-up) {
-      margin-top: $gap-8;
+      margin-top: $gap-12;
     }
 
     @include for-size(desktop-up) {
@@ -91,7 +90,7 @@
 }
 
 .content {
-  margin-top: $gap-8;
+  margin-top: $gap-12;
   grid-column: 1 / -1;
   display: grid;
 
@@ -99,7 +98,7 @@
 
   @include for-size(tablet-portrait-up) {
     grid-column: 2 / -2;
-    margin-top: $gap-12;
+    margin-top: $gap-16;
 
     @include grid(tablet-portrait-up);
   }
@@ -124,11 +123,11 @@
   }
 
   &__description {
-    margin-top: $gap-6;
+    margin-top: $gap-12;
     grid-column: 1 / -1;
 
     @include for-size(tablet-portrait-up) {
-      margin-top: $gap-12;
+      margin-top: $gap-16;
       grid-column: 2 / -1;
     }
 
@@ -140,7 +139,7 @@
 }
 
 .highlight {
-  margin-top: $gap-8;
+  margin-top: $gap-12;
   grid-column: 1 / -1;
   display: grid;
 
@@ -148,7 +147,7 @@
 
   @include for-size(tablet-portrait-up) {
     grid-column: 2 / -2;
-    margin-top: $gap-12;
+    margin-top: $gap-16;
 
     @include grid(tablet-portrait-up);
   }
@@ -180,7 +179,7 @@
   }
 
   &__slogan {
-    margin-top: $gap-6;
+    margin-top: $gap-8;
     grid-column: 1 / -1;
     color: $clr-dark-ebony;
     font-weight: $fw-light;
@@ -188,11 +187,10 @@
     text-align: center;
 
     @include for-size(tablet-portrait-up) {
-      margin-top: $gap-8;
+      margin-top: $gap-12;
     }
 
     @include for-size(desktop-up) {
-      margin-top: $gap-12;
       grid-column: 2 / -2;
       font-size: $fs-xl;
     }
@@ -200,7 +198,7 @@
 }
 
 .article {
-  margin-top: $gap-6;
+  margin-top: $gap-8;
   grid-column: 1 / -1;
   display: grid;
 
@@ -228,11 +226,11 @@
   }
 
   &__second {
-    margin-top: $gap-6;
+    margin-top: $gap-8;
     grid-column: 1 / -1;
 
     @include for-size(tablet-portrait-up) {
-      margin-top: $gap-8;
+      margin-top: $gap-12;
     }
 
     @include for-size(desktop-up) {
