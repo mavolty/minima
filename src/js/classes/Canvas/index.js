@@ -100,8 +100,8 @@ class Canvas {
 
   scrollUpHandler(event) {
     this.isDown = false
-    const x = event.changedTouches ? event.touches[0].clientX : event.clientX
-    const y = event.changedTouches ? event.touches[0].clientY : event.clientY
+    const x = event.changedTouches ? event.changedTouches[0].clientX : event.clientX
+    const y = event.changedTouches ? event.changedTouches[0].clientY : event.clientY
 
     this.x.end = x
     this.y.end = y

@@ -124,8 +124,8 @@ class App {
     window.addEventListener('mousedown', this.onScrollDown.bind(this))
     window.addEventListener('mousemove', this.onScrollMove.bind(this))
 
-    window.addEventListener('touchup', this.onScrollUp.bind(this))
-    window.addEventListener('touchdown', this.onScrollDown.bind(this))
+    window.addEventListener('touchend', this.onScrollUp.bind(this))
+    window.addEventListener('touchstart', this.onScrollDown.bind(this))
     window.addEventListener('touchmove', this.onScrollMove.bind(this))
   }
 
