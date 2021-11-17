@@ -15,13 +15,22 @@
   grid-template-areas:
     'info info'
     '. image';
-  grid-template-columns: 8rem 21vmax;
-  grid-template-rows: 8rem 28vmax;
+  grid-template-columns: 5rem 15.625rem;
+  grid-template-rows: 5rem 21.875rem;
+
+  @include for-size(desktop-up) {
+    grid-template-columns: 8rem 21vmax;
+    grid-template-rows: 8rem 28vmax;
+  }
 
   &__info {
     grid-area: info;
     display: grid;
-    grid-template-columns: 8rem 21vmax;
+    grid-template-columns: 5rem 15.625rem;
+
+    @include for-size(desktop-up) {
+      grid-template-columns: 8rem 21vmax;
+    }
   }
 
   &__number {
