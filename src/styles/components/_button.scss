@@ -24,12 +24,12 @@
 @mixin button {
   .button {
     @extend %button;
-    margin-top: $gap-8;
+    margin-top: $gap-12;
     grid-column: 1 / -1;
     text-align: center;
 
     @include for-size(tablet-portrait-up) {
-      margin-top: $gap-12;
+      margin-top: $gap-16;
       grid-column: 2 / -2;
     }
 
