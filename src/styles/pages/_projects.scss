@@ -34,11 +34,9 @@
   }
 
   &__number {
-    // grid-area: number;
     grid-column: 1 / 2;
     @extend %title-2xl;
     color: $clr-neutral-derby;
-    font-feature-settings: 'lnum';
     font-family: $ff-raleway;
     font-weight: $fw-reg;
     font-style: italic;
@@ -47,7 +45,6 @@
   }
 
   &__name {
-    // grid-area: title;
     grid-column: 2 / -1;
     @extend %title-xl;
     font-style: italic;

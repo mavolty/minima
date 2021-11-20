@@ -1,6 +1,5 @@
 .contact {
   font-size: $fs-md;
-  font-feature-settings: 'lnum';
 
   &__wrapper {
     @include grid-container(phone-only);

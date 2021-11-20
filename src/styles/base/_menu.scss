@@ -132,7 +132,6 @@
   &__info {
     position: relative;
     grid-column: 1 / -1;
-    font-feature-settings: 'lnum';
 
     @include for-size(tablet-portrait-up) {
       grid-column: 2 / -2;
