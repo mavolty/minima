@@ -39,19 +39,20 @@
 }
 
 .head-content {
-  margin-top: $gap-8;
+  margin-top: $gap-12;
   grid-column: 1 / -1;
   display: grid;
   grid-template-areas:
     'image1 image1'
     'article article'
     'image2 image2';
+  row-gap: $gap-4;
 
   @include grid(phone-only);
 
   @include for-size(tablet-portrait-up) {
     grid-column: 2 / -2;
-    margin-top: $gap-12;
+    margin-top: $gap-24;
     grid-template-areas:
       'image1 image1 image1 image1'
       'article article article article';
@@ -60,8 +61,9 @@
   }
 
   @include for-size(desktop-up) {
-    margin-top: $gap-24;
+    margin-top: $gap-40;
     grid-template-areas: unset;
+    row-gap: unset;
 
     @include grid(desktop-up);
   }
@@ -87,6 +89,10 @@
     margin-top: $gap-6;
     grid-column: 1 / -1;
     @extend %title-xl;
+
+    @include for-size(tablet-portrait-up) {
+      margin-top: $gap-8;
+    }
 
     @include for-size(desktop-up) {
       margin-top: unset;
@@ -155,16 +161,17 @@
   }
 
   &__media-second {
-    margin-top: $gap-6;
+    margin-top: $gap-12;
     grid-column: 1 / -1;
     height: 12.5rem;
 
     @include for-size(tablet-portrait-up) {
+      margin-top: $gap-16;
       height: 18.75rem;
     }
 
     @include for-size(desktop-up) {
-      margin-top: $gap-16;
+      margin-top: $gap-24;
       grid-column: span 6;
     }
 
@@ -177,16 +184,16 @@
 }
 
 .body-content {
-  margin-top: $gap-8;
+  margin-top: $gap-12;
   grid-column: 1 / -1;
 
   @include for-size(tablet-portrait-up) {
     grid-column: 2 / -2;
-    margin-top: $gap-12;
+    margin-top: $gap-24;
   }
 
   @include for-size(desktop-up) {
-    margin-top: $gap-24;
+    margin-top: $gap-40;
     display: grid;
 
     @include grid(desktop-up);
@@ -222,7 +229,7 @@
 }
 
 .footer-content {
-  margin-top: $gap-8;
+  margin-top: $gap-12;
   grid-column: 1 / -1;
   align-items: center;
   display: grid;
@@ -231,13 +238,13 @@
 
   @include for-size(tablet-portrait-up) {
     grid-column: 2 / -2;
-    margin-top: $gap-12;
+    margin-top: $gap-24;
 
     @include grid(tablet-portrait-up);
   }
 
   @include for-size(desktop-up) {
-    margin-top: $gap-24;
+    margin-top: $gap-40;
 
     @include grid(desktop-up);
   }
