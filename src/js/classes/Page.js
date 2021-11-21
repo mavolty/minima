@@ -5,6 +5,7 @@ import Image from '../animations/Image'
 import Projects from '../animations/Projects'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import normalizeWheel from 'normalize-wheel'
+import Hammer from 'hammerjs'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -30,6 +31,10 @@ class Page {
       last: 0,
       limit: 0,
     }
+
+    this.manager = new Hammer(document.body)
+    this.manager.get('pan').set({ direction: Hammer.DIRECTION_ALL })
+    this.manager.get('swipe').set({ direction: Hammer.DIRECTION_ALL })
 
     this.wheelEvent = this.wheelHandler.bind(this)
   }
@@ -96,10 +101,12 @@ class Page {
 
   wheelHandler(event) {
     const normalizedValue = normalizeWheel(event)
-    this.scroll.target += normalizedValue.pixelY * 0.75
+    if (event.type === 'wheel') this.scroll.target += normalizedValue.pixelY
+    else this.scroll.target -= normalizedValue.pixelY / 2
   }
 
   addWheel() {
+    this.manager.on('pan press', this.wheelEvent)
     window.addEventListener('wheel', this.wheelEvent)
   }
 

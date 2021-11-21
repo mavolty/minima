@@ -39,7 +39,7 @@ class Image extends Component {
         start: 'top center',
         scrub: true,
       },
-      y: 15,
+      y: 10000 / this.element.clientHeight,
     })
   }
 }
