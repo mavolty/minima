@@ -32,9 +32,11 @@ class Page {
       limit: 0,
     }
 
-    this.manager = new Hammer(document.body)
-    this.manager.get('pan').set({ direction: Hammer.DIRECTION_ALL })
-    this.manager.get('swipe').set({ direction: Hammer.DIRECTION_ALL })
+    // if (window.innerHeight > window.innerWidth) {
+    //   this.manager = new Hammer(document.body)
+    //   this.manager.get('pan').set({ direction: Hammer.DIRECTION_ALL })
+    //   this.manager.get('swipe').set({ direction: Hammer.DIRECTION_ALL })
+    // }
 
     this.wheelEvent = this.wheelHandler.bind(this)
   }
@@ -71,7 +73,8 @@ class Page {
 
   hide() {
     gsap.to(document.body, {
-      duration: 0.5,
+      duration: 0.8,
+      delay: 0.2,
       opacity: 0,
       onComplete: () => {
         this.removeWheel()
@@ -81,9 +84,10 @@ class Page {
 
   show() {
     gsap.to(document.body, {
-      duration: 0.5,
-      delay: 0.5,
+      duration: 0.8,
+      delay: 0.2,
       opacity: 1,
+      y: 0,
       onComplete: () => {
         this.addWheel()
       },
@@ -106,7 +110,12 @@ class Page {
   }
 
   addWheel() {
-    this.manager.on('pan press', this.wheelEvent)
+    // if (window.innerHeight > window.innerWidth) {
+    //   this.manager = new Hammer(document.body)
+    //   this.manager.get('pan').set({ direction: Hammer.DIRECTION_ALL })
+    //   this.manager.get('swipe').set({ direction: Hammer.DIRECTION_ALL })
+    //   this.manager.on('pan press', this.wheelEvent)
+    // }
     window.addEventListener('wheel', this.wheelEvent)
   }
 
