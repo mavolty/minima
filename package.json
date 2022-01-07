@@ -1,5 +1,5 @@
 {
-  "name": "create-javascript-project",
+  "name": "minima",
   "version": "1.0.0",
   "description": "Minima Interior Design",
   "main": "index.js",
@@ -13,9 +13,9 @@
     "prettify": "prettier --write 'src/**/*.js'"
   },
   "keywords": [
-    "webpack",
-    "webpack 5",
-    "webpack boilerplate"
+    "minima",
+    "interior design",
+    "interior"
   ],
   "devDependencies": {
     "@babel/core": "^7.15.8",
