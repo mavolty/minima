@@ -1,4 +1,5 @@
 import Component from '../classes/Component'
+import gsap from 'gsap'
 
 class Preloader extends Component {
   constructor() {
@@ -37,7 +38,9 @@ class Preloader extends Component {
   assetsLoadedHandler() {
     this.length++
     const value = this.length / this.elements.images.length
-    console.log(value)
+    const percent = Math.round(value * 100)
+
+    this.elements.title.innerHTML = `${percent}%`
 
     if (value === 1) {
       this.loadedHandler()
@@ -45,7 +48,11 @@ class Preloader extends Component {
   }
 
   loadedHandler() {
-    this.emit('completed')
+    gsap.to(this.element, {
+      duration: 0.5,
+      opacity: 0,
+      onComplete: () => this.emit('completed'),
+    })
   }
 
   destroy() {
