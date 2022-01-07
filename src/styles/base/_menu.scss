@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   display: none;
+
   &__layer {
     background-color: $clr-dark-ebony;
     width: 100%;
@@ -17,16 +18,18 @@
 
   &__wrapper {
     background-color: $clr-neutral-swirl;
-    position: relative;
-    height: 100%;
     overflow: hidden;
     z-index: z('menu');
+  }
 
+  &__content {
     @include grid-container(phone-only);
     grid-template-rows: repeat(2, max-content);
     row-gap: $gap-12;
     align-content: center;
     align-items: center;
+    position: relative;
+    height: 100vh;
 
     @include for-size(tablet-portrait-up) {
       @include grid-container(tablet-portrait-up);
@@ -34,8 +37,8 @@
 
     @include for-size(desktop-up) {
       @include grid-container(desktop-up);
-      grid-template-rows: none;
-      row-gap: none;
+      grid-template-rows: unset;
+      row-gap: unset;
     }
   }
 
