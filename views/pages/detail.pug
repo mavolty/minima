@@ -1,17 +1,17 @@
 extends ../base.pug
 
 block variables
-  - var template = "detail"
+  - var template = 'detail'
 
 block body
   section.detail
     .detail__wrapper
-      h1.detail__name(data-animation='title')= project.name[0].text
+      h1.detail__name(data-animation='title')= project.title[0].text
       figure.detail__media
-        img.detail__image(data-src=project.image.url, alt=project.image.alt)
+        img.detail__image(data-src=project.project_image.url, alt=project.project_image.alt)
 
       each section in project.body
-        if section.slice_type === 'content'
+        if section.slice_type === 'head_content'
           .head-content
             article.head-content__article
               h2.head-content__title(data-animation='title')= section.primary.title[0].text
@@ -31,14 +31,14 @@ block body
                   li.head-content__item= section.primary.year[0].text
               figure.head-content__media-second
                 img.head-content__media-second__image(
-                  data-src=section.primary["head-image-2"].url,
-                  alt=section.primary["head-image-2"].alt,
+                  data-src=section.primary['head-image-2'].url,
+                  alt=section.primary['head-image-2'].alt,
                   data-animation='image'
                 ) 
             figure.head-content__media-first
               img.head-content__media-first__image(
-                data-src=section.primary["head-image-1"].url,
-                alt=section.primary["head-image-1"].alt,
+                data-src=section.primary['head-image-1'].url,
+                alt=section.primary['head-image-1'].alt,
                 data-animation='image'
               )
 
@@ -46,8 +46,8 @@ block body
           .body-content
             figure.body-content__media 
               img.body-content__image(
-                data-src=section.primary["body-image"].url,
-                alt=section.primary["body-image"].alt
+                data-src=section.primary['body-image'].url,
+                alt=section.primary['body-image'].alt
               )
             p.body-content__description(data-animation='paragraph')= section.primary.description[0].text
 
@@ -55,14 +55,14 @@ block body
           .footer-content
             figure.footer-content__media-first
               img.footer-content__media-first__image(
-                data-src=section.primary["footer-image-1"].url,
-                alt=section.primary["footer-image-1"].alt,
+                data-src=section.primary['footer-image-1'].url,
+                alt=section.primary['footer-image-1'].alt,
                 data-animation='image'
               )
             figure.footer-content__media-second
               img.footer-content__media-second__image(
-                data-src=section.primary["footer-image-2"].url,
-                alt=section.primary["footer-image-2"].alt,
+                data-src=section.primary['footer-image-2'].url,
+                alt=section.primary['footer-image-2'].alt,
                 data-animation='image'
               )
 
