@@ -2,11 +2,13 @@ header.header
   nav.navigation
     .navigation__wrapper
       .navigation__bar
-        a.navigation__brand(href='/') Brand
+        each section in navigation.brand
+          a.navigation__brand(href=Link(section.link))
+            img(data-src=section.image.url, alt=section.image.alt)
 
-        label.navigation__label(for='check')
-          span
-          span
-          span
+          label.navigation__label(for='check')
+            span
+            span
+            span
 
   include ./menu
