@@ -33,14 +33,16 @@ class Image extends Component {
       ease: 'power3.inOut',
     })
 
-    gsap.to(this.element, {
-      scrollTrigger: {
-        trigger: this.element,
-        start: 'top center',
-        scrub: true,
-      },
-      y: 10000 / this.element.clientHeight,
-    })
+    if (window.innerWidth > 600) {
+      gsap.to(this.element, {
+        scrollTrigger: {
+          trigger: this.element,
+          start: 'top center',
+          scrub: true,
+        },
+        y: 10000 / this.element.clientHeight,
+      })
+    }
   }
 }
 
