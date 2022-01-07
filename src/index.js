@@ -44,8 +44,6 @@ class App {
   }
 
   preloadHandler() {
-    console.log('100% Loaded')
-
     this.preloader.destroy()
     this.onResize()
     this.page.show()
@@ -69,15 +67,17 @@ class App {
     this.page.create()
   }
 
-  async linkHandler(target) {
+  async linkHandler({ target, isPush = true }) {
     if (this.navLink) setTimeout(() => this.page.hide(), 800)
     else this.page.hide()
 
-    const request = await window.fetch(target)
-
     try {
-      const html = await request.text()
+      const response = await fetch(target)
+      const html = await response.text()
       const div = document.createElement('div')
+
+      if (isPush) window.history.pushState({}, '', target)
+
       div.innerHTML = html
 
       const divContent = div.querySelector('#root')
@@ -93,12 +93,12 @@ class App {
       this.page = this.pages[this.template]
       this.page.create()
       this.onResize()
-      this.page.show()
 
       this.addLink()
     } catch (error) {
       console.error(error)
     }
+    this.page.show()
   }
 
   addLink() {
@@ -110,23 +110,9 @@ class App {
         const { target } = event
         this.navLink = target.classList.contains('menu__link')
 
-        this.linkHandler(target.href)
+        this.linkHandler({ target: target.href })
       }
     })
-  }
-
-  addResize() {
-    window.addEventListener('resize', this.onResize.bind(this))
-
-    window.addEventListener('wheel', this.onWheel.bind(this))
-
-    window.addEventListener('mouseup', this.onScrollUp.bind(this))
-    window.addEventListener('mousedown', this.onScrollDown.bind(this))
-    window.addEventListener('mousemove', this.onScrollMove.bind(this))
-
-    window.addEventListener('touchend', this.onScrollUp.bind(this))
-    window.addEventListener('touchstart', this.onScrollDown.bind(this))
-    window.addEventListener('touchmove', this.onScrollMove.bind(this))
   }
 
   onResize() {
@@ -158,6 +144,29 @@ class App {
 
   onScrollMove(event) {
     if (this.canvas && this.canvas.scrollMoveHandler) this.canvas.scrollMoveHandler(event)
+  }
+
+  onPopState() {
+    this.linkHandler({
+      target: window.location.pathname,
+      isPush: false,
+    })
+  }
+
+  addResize() {
+    window.addEventListener('resize', this.onResize.bind(this))
+
+    window.addEventListener('wheel', this.onWheel.bind(this))
+
+    window.addEventListener('mouseup', this.onScrollUp.bind(this))
+    window.addEventListener('mousedown', this.onScrollDown.bind(this))
+    window.addEventListener('mousemove', this.onScrollMove.bind(this))
+
+    window.addEventListener('touchend', this.onScrollUp.bind(this))
+    window.addEventListener('touchstart', this.onScrollDown.bind(this))
+    window.addEventListener('touchmove', this.onScrollMove.bind(this))
+
+    window.addEventListener('popstate', this.onPopState.bind(this))
   }
 }
 
