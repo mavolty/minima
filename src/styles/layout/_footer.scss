@@ -63,7 +63,7 @@
     grid-column: 1 / -1;
 
     @include for-size(tablet-portrait-up) {
-      grid-column: 4 / 5;
+      grid-column: 5 / -1;
     }
 
     @include for-size(desktop-up) {
