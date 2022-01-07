@@ -5,7 +5,6 @@ const app = express()
 const port = 3000
 const Prismic = require('@prismicio/client')
 const PrismicDOM = require('prismic-dom')
-const apiEndpoint = process.env.PRISMIC_END_POINT
 
 // Link Resolver
 const linkResolver = (doc) => {
@@ -26,14 +25,36 @@ const linkResolver = (doc) => {
     return '/contact'
   }
 
+  if (doc.type === 'home') {
+    return '/'
+  }
+
   // Default to homepage
-  return '/'
+  return '/404'
 }
+
+// Middleware to inject prismic context
+app.use(function (req, res, next) {
+  res.locals.Link = linkResolver
+
+  // add PrismicDOM in locals to access them in templates.
+  res.locals.PrismicDOM = PrismicDOM
+
+  next()
+})
+
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+
+app.use(express.static(path.join(__dirname + '/public')))
 
 // Initialize the prismic.io api
 const initApi = (req) => {
+  const apiEndpoint = process.env.PRISMIC_END_POINT
+  const accessToken = process.env.PRISMIC_ACCESS_TOKEN
+
   return Prismic.getApi(apiEndpoint, {
-    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+    accessToken,
     req,
   })
 }
@@ -51,21 +72,6 @@ const requestHandler = async (api) => {
     footer: footer.data,
   }
 }
-
-// Middleware to inject prismic context
-app.use(function (req, res, next) {
-  res.locals.Link = linkResolver
-
-  // add PrismicDOM in locals to access them in templates.
-  res.locals.PrismicDOM = PrismicDOM
-
-  next()
-})
-
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
-
-app.use(express.static(path.join(__dirname + '/public')))
 
 app.get('/', async (req, res) => {
   const api = await initApi(req)
@@ -103,11 +109,10 @@ app.get('/projects', async (req, res) => {
 app.get('/projects/:uid', async (req, res) => {
   const api = await initApi(req)
   const initial = await requestHandler(api)
-  const project = await api.getByUID('detail', req.params.uid)
+  const project = await api.getByUID('project', req.params.uid)
 
   res.render('pages/detail', {
     project: project.data,
-
     ...initial,
   })
 })
@@ -119,6 +124,15 @@ app.get('/contact', async (req, res) => {
 
   res.render('pages/contact', {
     contact: contact.data,
+    ...initial,
+  })
+})
+
+app.get('*', async (req, res) => {
+  const api = await initApi(req)
+  const initial = await requestHandler(api)
+
+  res.render('pages/404', {
     ...initial,
   })
 })
