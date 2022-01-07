@@ -112,8 +112,7 @@
     margin-top: $gap-4;
     grid-column: 1 / -1;
     display: grid;
-
-    @include grid(phone-only);
+    grid-template-columns: 1fr 1fr;
 
     @include for-size(desktop-up) {
       margin-top: $gap-6;
