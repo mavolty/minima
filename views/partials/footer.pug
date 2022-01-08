@@ -19,7 +19,7 @@ footer.footer
           ul.footer__menu__list
             each menu in section.items
               li.footer__menu__item
-                a.footer__menu__link(href=Link(menu.link))= menu.name
+                a.footer__menu__link(href=ctx.prismicH.asLink(menu.link))= menu.name
 
       if section.slice_type === 'email'
         .footer__email

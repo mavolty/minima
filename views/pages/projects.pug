@@ -1,7 +1,7 @@
 extends ../base.pug
 
 block variables
-  - var template = "projects"
+  - var template = 'projects'
 
 block body
   section.projects(data-animation='projects')
@@ -11,7 +11,7 @@ block body
           .project__info(data-animation='info-projects')
             h3.project__number= index + 1
             h2.project__name= project.data.title[0].text
-          a.project__link(href=Link(project), data-animation='link-projects')
+          a.project__link(href=ctx.prismicH.asLink(project), data-animation='link-projects')
             figure.project__media(data-animation='media-projects')
               img.project__image(
                 data-animation='image-projects',

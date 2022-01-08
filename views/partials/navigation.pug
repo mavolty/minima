@@ -3,7 +3,7 @@ header.header
     .navigation__wrapper
       .navigation__bar
         each section in navigation.brand
-          a.navigation__brand(href=Link(section.link))
+          a.navigation__brand(href=ctx.prismicH.asLink(section.link))
             img(data-src=section.image.url, alt=section.image.alt)
 
           label.navigation__label(for='check')

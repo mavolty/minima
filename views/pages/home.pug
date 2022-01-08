@@ -1,7 +1,7 @@
 extends ../base.pug
 
 block variables
-  - var template = "home"
+  - var template = 'home'
 
 block body
   section.home
@@ -11,4 +11,4 @@ block body
           figure.home__media
             img.home__media__image(data-src=media.image.url, alt=media.image.alt)
       h1.home__heading= home.title
-      a.home__button(href=Link(home.link))= home.label
+      a.home__button(href=ctx.prismicH.asLink(home.link))= home.label

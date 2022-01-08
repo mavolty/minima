@@ -1,7 +1,7 @@
 extends ../base.pug
 
 block variables
-  - var template = "about"
+  - var template = 'about'
 
 block body
   section.about
@@ -44,4 +44,4 @@ block body
         if section.slice_type === 'button'
           .button
             p.button__subtitle= section.primary.subtitle
-            a.button__link(href=Link(section.primary.link))= section.primary.title
+            a.button__link(href=ctx.prismicH.asLink(section.primary.link))= section.primary.title
