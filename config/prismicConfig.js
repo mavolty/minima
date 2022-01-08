@@ -1,10 +1,9 @@
-require('dotenv').config()
-
 const fetch = require('node-fetch')
 const prismic = require('@prismicio/client')
 
-const accessToken = process.env.PRISMIC_ACCESS_TOKEN
-const endpoint = process.env.PRISMIC_END_POINT
+const repoName = 'minima-interior'
+const accessToken = ''
+const endpoint = prismic.getEndpoint(repoName)
 
 const routes = [
   {
