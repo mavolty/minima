@@ -20,12 +20,7 @@ module.exports = merge(common, {
     devMiddleware: {
       writeToDisk: true,
     },
-    // historyApiFallback: true,
-    // static: paths.public,
-    // open: true,
-    // compress: true,
-    // hot: true,
-    // port: 8080,
+    static: paths.build,
   },
 
   plugins: [

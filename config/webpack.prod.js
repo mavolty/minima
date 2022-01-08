@@ -1,4 +1,3 @@
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const { merge } = require('webpack-merge')
 
 const paths = require('./paths')
@@ -10,13 +9,6 @@ module.exports = merge(common, {
   output: {
     path: paths.build,
     publicPath: '/',
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [new CssMinimizerPlugin(), '...'],
-    runtimeChunk: {
-      name: 'runtime',
-    },
   },
   performance: {
     hints: false,

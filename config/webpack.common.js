@@ -2,18 +2,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const path = require('path')
 const paths = require('./paths')
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [`${paths.src}/index.js`, `${paths.src}/styles/index.scss`],
+  entry: [path.join(paths.src, 'index.js'), path.join(paths.src, 'styles/index.scss')],
 
   // Customize the webpack build process
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
 
-    // Copies files from target to destination folder
+    // // Copies files from target to destination folder
     new CopyWebpackPlugin({
       patterns: [
         {
