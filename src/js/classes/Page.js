@@ -73,8 +73,7 @@ class Page {
 
   hide() {
     gsap.to(document.body, {
-      duration: 0.8,
-      delay: 0.2,
+      duration: 0.2,
       opacity: 0,
       onComplete: () => {
         this.removeWheel()
@@ -84,8 +83,7 @@ class Page {
 
   show() {
     gsap.to(document.body, {
-      duration: 0.8,
-      delay: 0.2,
+      duration: 0.2,
       opacity: 1,
       y: 0,
       onComplete: () => {
