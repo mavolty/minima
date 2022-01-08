@@ -32,9 +32,9 @@ html(lang='id')
     meta(name='twitter:image', content=meta.image ? meta.image.url : '')
 
     link(rel='preconnect', href='https://www.google-analytics.com')
+    link(rel='preload', href='/main.css', as='style')
 
-    style
-      include ../dist/main.css
+    link(rel='stylesheet', href='/main.css')
 
   body
     include ./partials/preloader
@@ -45,5 +45,4 @@ html(lang='id')
 
     include ./partials/footer
 
-    script
-      include ../dist/main.js
+    script(async, src='/main.js')
