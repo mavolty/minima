@@ -68,8 +68,7 @@ class App {
   }
 
   async linkHandler({ target, isPush = true }) {
-    if (this.navLink) setTimeout(() => this.page.hide(), 800)
-    else this.page.hide()
+    if (!this.navLink) this.page.hide()
 
     try {
       const response = await fetch(target)
