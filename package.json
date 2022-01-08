@@ -2,13 +2,15 @@
   "name": "minima",
   "version": "1.0.0",
   "description": "Minima Interior Design",
-  "main": "index.js",
+  "main": "app.js",
   "author": "Saddam Husain",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --progress --config config/webpack.dev.js",
+    "dev:frontend": "cross-env NODE_ENV=development webpack serve --progress --config config/webpack.dev.js",
+    "dev:backend": "nodemon app",
+    "dev:concurrently": "concurrently --kill-others \"npm run dev:frontend\" \"npm run dev:backend\"",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "start": "concurrently --kill-others \"npm run dev\" \"nodemon app\"",
+    "start": "node .",
     "lint": "eslint . src config || true",
     "prettify": "prettier --write 'src/**/*.js'"
   },
@@ -60,11 +62,13 @@
     "url": "git@github.com:mavolty/create-javascript-project"
   },
   "dependencies": {
-    "@prismicio/client": "^5.1.0",
+    "@prismicio/client": "^6.0.0",
+    "@prismicio/helpers": "^2.0.0",
     "concurrently": "^6.3.0",
     "express": "^4.17.1",
     "gsap": "^3.8.0",
     "hammerjs": "^2.0.8",
+    "node-fetch": "^2.6.6",
     "nodemon": "^2.0.14",
     "prismic-dom": "^2.2.6",
     "pug": "^3.0.2",
