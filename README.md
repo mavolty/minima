@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/mavolty/minima">
     <img src="https://images.prismic.io/minima-interior/bd31c79f-b086-4754-aaf4-c1ec3156a8aa_logo.png?auto=compress,formatg" alt="Logo">
   </a>
 
@@ -45,7 +45,6 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
