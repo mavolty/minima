@@ -1,7 +1,7 @@
 {
   "name": "minima",
   "version": "1.0.0",
-  "description": "Minima Interior Design",
+  "description": "Jasa desain interior berkualitas untuk merealisasikan rumah impian Anda",
   "main": "app.js",
   "author": "Saddam Husain",
   "license": "MIT",
@@ -59,7 +59,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mavolty/create-javascript-project"
+    "url": "git@github.com:mavolty/minima"
   },
   "dependencies": {
     "@prismicio/client": "^6.0.0",
