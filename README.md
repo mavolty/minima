@@ -103,4 +103,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: https://awesomescreenshot.s3.amazonaws.com/image/2851424/19851267-4319c6d17fd148636e896a88a34b8bbd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20220110%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220110T133427Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=a9b1ddb68da1ca787389c07a2d2b3540f5018894e1296a20964c9855ed7036c6
+[product-screenshot]: docs/demo-website.png
