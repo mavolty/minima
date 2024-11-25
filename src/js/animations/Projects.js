@@ -1,6 +1,6 @@
-import Component from '../classes/Component'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Component from '../classes/Component'
 
 gsap.registerPlugin(ScrollTrigger)
 
